@@ -36,7 +36,7 @@ class CellTest {
 
     @Test
     public void getPlayerPlayerAssignedTest() {
-        Player marsh = new Player("Marsh");
+        Player marsh = new Player("Marsh", "green");
         Cell testCell = new Cell();
         testCell.setPlayer(marsh);
         String actual = "Wrong";
