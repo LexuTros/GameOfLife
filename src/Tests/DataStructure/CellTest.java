@@ -49,11 +49,10 @@ class CellTest {
     }
 
     @Test
-    public void getRoundChangedTest() {
+    public void getRoundChangedNewCellTest() {
         Cell testCell = new Cell();
-        int actual = -1;
         try {
-            actual = testCell.getRoundChanged();
+            testCell.getRoundChanged();
         } catch (NotYetChanged e) {
             // All good here, expected exception
         } catch (Exception e) {
@@ -77,10 +76,8 @@ class CellTest {
     @Test
     public void setNegativeOrZeroRoundChangedTest() {
         Cell testCell = new Cell();
-        int actual = -1;
         try {
             testCell.setRoundChanged(0);
-            actual = testCell.getRoundChanged();
         } catch (InvalidRound e) {
             // All good here, expected exception
         } catch (Exception e) {
