@@ -29,6 +29,7 @@ public class Board {
     public Cell getField(int xCoordinate, int yCoordinate) throws InvalidCoordinate {
         xCoordinate--;
         yCoordinate--;
+        // make sure the choice is valid, throw exception if it isn't
         if (xCoordinate < 0 ||
                 yCoordinate < 0 ||
                 xCoordinate >= board.length ||
