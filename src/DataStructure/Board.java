@@ -5,7 +5,7 @@ import Exceptions.InvalidHeight;
 import Exceptions.InvalidWidth;
 
 public class Board {
-    final Cell[][] board;
+    private final Cell[][] board;
 
     public Board(int height, int width) throws InvalidHeight, InvalidWidth {
         if (height < 1) {
