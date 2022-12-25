@@ -21,7 +21,7 @@ public class BoardTest {
     public void constructorInvalidHeightTest() {
         try {
             Board testBoard = new Board(0, 10);
-        } catch (InvalidHeight e) {
+        } catch (InvalidWidth e) {
             // All good here, expected exception
         } catch (Exception e) {
             fail("Different exception wrongly thrown.");
@@ -32,7 +32,7 @@ public class BoardTest {
     public void constructorInvalidWidthTest() {
         try {
             Board testBoard = new Board(5, 0);
-        } catch (InvalidWidth e) {
+        } catch (InvalidHeight e) {
             // All good here, expected exception
         } catch (Exception e) {
             fail("Different exception wrongly thrown.");

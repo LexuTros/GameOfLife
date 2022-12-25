@@ -7,7 +7,7 @@ import Exceptions.InvalidWidth;
 public class Board {
     private final Cell[][] board;
 
-    public Board(int height, int width) throws InvalidHeight, InvalidWidth {
+    public Board(int width, int height) throws InvalidHeight, InvalidWidth {
         if (height < 1) {
             throw new InvalidHeight();
         } else if (width < 1) {
@@ -32,10 +32,10 @@ public class Board {
         // make sure the choice is valid, throw exception if it isn't
         if (xCoordinate < 0 ||
                 yCoordinate < 0 ||
-                xCoordinate >= board.length ||
-                yCoordinate >= board[0].length) {
+                xCoordinate >= board[0].length ||
+                yCoordinate >= board.length) {
             throw new InvalidCoordinate();
         }
-        return board[xCoordinate][yCoordinate];
+        return board[yCoordinate][xCoordinate];
     }
 }
