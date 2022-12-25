@@ -52,7 +52,7 @@ public class Game {
                 return boardInputSize;
             }
 
-            throw new IllegalArgumentException(ANSI_RED + "Width and height of board must be equal! Please try again." + ANSI_RESET);
+            System.out.println(ANSI_RED + "Width and height of board must be equal! Please try again." + ANSI_RESET);
         }
 
     }

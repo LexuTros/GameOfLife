@@ -88,7 +88,7 @@ public class GameTest {
         System.setIn(new ByteArrayInputStream(input.getBytes()));
         ByteArrayOutputStream outContent = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outContent));
-        assertThrows(IllegalArgumentException.class, () -> g.getBoardSize());
+        assertThrows(NoSuchElementException.class, () -> g.getBoardSize());
     }
 
     @Test
