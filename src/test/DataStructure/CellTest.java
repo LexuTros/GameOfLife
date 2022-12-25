@@ -95,11 +95,11 @@ class CellTest {
     public void setAliveNeighborsTest() {
         Cell testCell = new Cell();
         try {
-            testCell.setAliveNeighbors(9);
+            testCell.setAliveNeighbors(8);
         } catch (Exception e) {
             fail("Should not throw an exception.");
         }
-        assertEquals(9, testCell.getAliveNeighbors());
+        assertEquals(8, testCell.getAliveNeighbors());
     }
 
     @Test
