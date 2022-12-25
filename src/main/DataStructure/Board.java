@@ -6,6 +6,8 @@ import Exceptions.InvalidWidth;
 
 public class Board {
     private final Cell[][] board;
+    public final int width;
+    public final int height;
 
     public Board(int width, int height) throws InvalidHeight, InvalidWidth {
         if (height < 1) {
@@ -13,6 +15,8 @@ public class Board {
         } else if (width < 1) {
             throw new InvalidWidth();
         } else {
+            this.width = width;
+            this.height = height;
             board = new Cell[height][width];
             initializeBoard();
         }
