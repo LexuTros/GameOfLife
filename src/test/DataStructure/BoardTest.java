@@ -1,4 +1,4 @@
-package Tests.DataStructure;
+package DataStructure;
 
 import DataStructure.Board;
 import DataStructure.Cell;
