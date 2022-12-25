@@ -51,7 +51,7 @@ public class Cell {
     }
 
     public void setAliveNeighbors(int numberOfNeighborsAlive) throws TooManyAliveNeighbors, NegativeAmountOfNeighbors {
-        if (numberOfNeighborsAlive > 9) {
+        if (numberOfNeighborsAlive > 8) {
             throw new TooManyAliveNeighbors();
         } else if (numberOfNeighborsAlive < 0) {
             throw new NegativeAmountOfNeighbors();
