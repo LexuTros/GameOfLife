@@ -18,17 +18,17 @@ public class Board {
             this.width = width;
             this.height = height;
             board = new Cell[height][width];
-            initializeBoard();
+//            initializeBoard();
         }
     }
 
-    private void initializeBoard() {
-        for (int row = 0; row < board.length; row++) {
-            for (int col = 0; col < board[row].length; col++) {
-                board[row][col] = new Cell();
-            }
-        }
-    }
+//    private void initializeBoard() {
+//        for (int row = 0; row < board.length; row++) {
+//            for (int col = 0; col < board[row].length; col++) {
+//                board[row][col] = new Cell();
+//            }
+//        }
+//    }
 
     public Cell getField(int xCoordinate, int yCoordinate) throws InvalidCoordinate {
         xCoordinate--;
