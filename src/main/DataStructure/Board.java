@@ -4,31 +4,41 @@ import Exceptions.InvalidCoordinate;
 import Exceptions.InvalidHeight;
 import Exceptions.InvalidWidth;
 
-public class Board {
-    private final Cell[][] board;
-    public final int width;
-    public final int height;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.Color;
 
-    public Board(int width, int height) throws InvalidHeight, InvalidWidth {
-        if (height < 1) {
-            throw new InvalidHeight();
-        } else if (width < 1) {
-            throw new InvalidWidth();
-        } else {
-            this.width = width;
-            this.height = height;
-            board = new Cell[height][width];
-//            initializeBoard();
-        }
+public class Board extends JPanel {
+
+    public int width;
+    public int height;
+    private Cell[][] board;
+
+    public Board() {
+//            throws InvalidHeight, InvalidWidth {
+//        if (height < 1) {
+//            throw new InvalidHeight();
+//        } else if (width < 1) {
+//            throw new InvalidWidth();
+//        } else {
+//            this.width = width;
+//            this.height = height;
+//            board = new Cell[height][width];
+        board = new Cell[100][75];
+        this.setPreferredSize(new Dimension(1000,750));
+        this.setBackground(Color.white);
+        this.setLayout(new GridLayout(75,100));
+        for (int row = 0; row < 75; row++)
+            for (int col = 0; col < 100; col++)
+            {
+                Cell cell = new Cell(col,row);
+                this.add(cell);
+                board[col][row] = new Cell(col, row);
+            }
     }
 
-//    private void initializeBoard() {
-//        for (int row = 0; row < board.length; row++) {
-//            for (int col = 0; col < board[row].length; col++) {
-//                board[row][col] = new Cell();
-//            }
-//        }
-//    }
+
+
 
     public Cell getField(int xCoordinate, int yCoordinate) throws InvalidCoordinate {
         xCoordinate--;

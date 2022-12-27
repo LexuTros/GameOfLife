@@ -8,8 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-public class GuiGetPlayers extends GuiTemplate implements ActionListener {
-
+public class GuiGetColor extends GuiTemplate implements ActionListener {
 
     JButton button;
     JLabel titleFrame;
@@ -17,7 +16,7 @@ public class GuiGetPlayers extends GuiTemplate implements ActionListener {
     JTextField playerTwo;
     public static ArrayList<String> players;
 
-    public GuiGetPlayers(){
+    public GuiGetColor(){
 
         this.setLayout(null);
 
@@ -109,8 +108,7 @@ public class GuiGetPlayers extends GuiTemplate implements ActionListener {
     }
 
 
-        public static void main (String[]args){
-            GuiGetPlayers players = new GuiGetPlayers();
-        }
+    public static void main (String[]args){
+        GuiGetPlayers players = new GuiGetPlayers();
     }
-
+}
