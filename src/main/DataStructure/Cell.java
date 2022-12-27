@@ -2,13 +2,30 @@ package DataStructure;
 
 import Exceptions.*;
 
-public class Cell {
+import javax.swing.*;
+import javax.swing.border.Border;
+import java.awt.*;
+import java.awt.Color;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+
+public class Cell extends JLabel implements MouseListener {
     private boolean isAlive;
     private Player playerOfCell;
     private int roundChanged;
     private int aliveNeighbors;
 
-    public Cell() {
+    private int x;
+    private int y;
+
+    public Cell(int x, int y) {
+        this.setLayout(new FlowLayout());
+        this.setBackground(Color.LIGHT_GRAY);
+        this.setOpaque(true);
+        this.setBorder(BorderFactory.createLineBorder(Color.darkGray, 1));
+        this.addMouseListener(this);
+        this.x = x;
+        this.y = y;
         isAlive = false;
         roundChanged = -1;
     }
@@ -57,5 +74,29 @@ public class Cell {
             throw new NegativeAmountOfNeighbors();
         }
         aliveNeighbors = numberOfNeighborsAlive;
+    }
+
+    @Override
+    public void mouseClicked(MouseEvent e) {
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+        System.out.println(x+","+y);
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+
     }
 }
