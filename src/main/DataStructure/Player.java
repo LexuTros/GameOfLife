@@ -1,14 +1,17 @@
 package DataStructure;
 
-public class Player {
+import javax.swing.*;
+import java.awt.*;
+
+public class Player extends JLabel {
     private String name;
     private Color color;
     private int aliveCells;
 
 
-    public Player(String name, String color) {
+    public Player(String name, Color color) {
         this.name = name;
-        this.color = Color.valueOf(color.toUpperCase());
+        this.color = color;
         this.aliveCells = 0;;
 
     }
@@ -18,7 +21,7 @@ public class Player {
     }
 
     public int getAliveCells() {
-        return aliveCells;
+        return this.aliveCells;
     }
 
     public String getPlayerName() {
