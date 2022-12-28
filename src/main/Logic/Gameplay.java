@@ -49,8 +49,6 @@ public class Gameplay {
     public static void initializePlayers(){
         players = GuiGetPlayers.players;
         colors = GuiGetPlayers.colors;
-        System.out.println(players);
-        System.out.println(colors);
 
         player1 = new Player(players.get(0), colors.get(0));
         player2 = new Player(players.get(1), colors.get(1));
