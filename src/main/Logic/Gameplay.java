@@ -11,13 +11,20 @@ import java.util.ArrayList;
 
 public class Gameplay {
 
-    static ArrayList players;
-    static ArrayList colors;
+    private static Player activePlayer;
+    static ArrayList<String> players;
+    static ArrayList<Color> colors;
     static Player player1;
     static Player player2;
 
     Gameplay(){}
     // Initialisation
+
+    // TO-DO
+
+    public static Player getActivePlayer(){
+        return activePlayer;
+            }
 
     private static void welcomeDisplay(){
         GuiWelcome welcome = new GuiWelcome();
@@ -39,14 +46,21 @@ public class Gameplay {
         System.out.println(players);
         System.out.println(colors);
 
-        player1 = new Player((String) players.get(0), (Color) colors.get(0));
-        player2 = new Player((String) players.get(1), (Color) colors.get(1));
+        player1 = new Player(players.get(0), colors.get(0));
+        player2 = new Player(players.get(1), colors.get(1));
+        getStartingPlayer();
         startGame();
     }
     private void getBoardSize(){}
-    private static void startGame(){
-      GuiGame game = new GuiGame(player1, player2);
 
+
+    // TO-DO: get first player alphabetically
+    private static void getStartingPlayer(){
+        activePlayer = player1;
+    }
+
+    private static void startGame(){
+        GuiGame game = new GuiGame(player1, player2, activePlayer);
     }
     private void nextGeneration(){}
     private void checkWinner(){}

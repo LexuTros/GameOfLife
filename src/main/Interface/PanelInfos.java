@@ -10,7 +10,7 @@ import java.awt.event.ActionListener;
 
 public class PanelInfos extends JPanel implements ActionListener {
 
-    PanelInfos(Player playerOne, Player playerTwo)
+    PanelInfos(Player playerOne, Player playerTwo, Player activePlayer)
     {
         this.setLayout(null);
 
@@ -72,11 +72,11 @@ public class PanelInfos extends JPanel implements ActionListener {
         textActivePlayer.setBounds(20, 400, 160, 30);
         textActivePlayer.setText("active Player:");
 
-        JLabel activePlayer = new JLabel();
-        activePlayer.setFont(new Font("MV Boli", Font.BOLD, 20));
-        activePlayer.setForeground(Color.blue);
-        activePlayer.setBounds(20, 440, 160, 30);
-        activePlayer.setText("Player 3");
+        JLabel labelActivePlayer = new JLabel();
+        labelActivePlayer.setFont(new Font("MV Boli", Font.BOLD, 25));
+        labelActivePlayer.setForeground(Color.blue);
+        labelActivePlayer.setBounds(20, 440, 160, 30);
+        labelActivePlayer.setText(activePlayer.getPlayerName());
 
         // Button to continue game
 
@@ -91,7 +91,7 @@ public class PanelInfos extends JPanel implements ActionListener {
 
         this.add(generation);
         this.add(textActivePlayer);
-        this.add(activePlayer);
+        this.add(labelActivePlayer);
         this.add(boxPlayerOne);
         this.add(boxPlayerTwo);
         this.add(buttonDone);
