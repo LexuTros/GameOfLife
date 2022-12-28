@@ -14,6 +14,7 @@ public class Cell extends JLabel implements MouseListener {
     private int roundChanged;
     private int roundKilled;
     private int aliveNeighbors;
+    private boolean enabled;
 
     public Cell() {
         this.setLayout(new FlowLayout());
@@ -24,6 +25,7 @@ public class Cell extends JLabel implements MouseListener {
         this.isAlive = false;
         this.roundChanged = -1;
         this.roundKilled =-1;
+        this.enabled = true;
     }
 
     public boolean getIsAlive() {
@@ -32,6 +34,10 @@ public class Cell extends JLabel implements MouseListener {
 
     public void setIsAlive(boolean newStatus) {
         isAlive = newStatus;
+    }
+
+    public void setEnabledChange(boolean enabledInput){
+        enabled = enabledInput;
     }
 
     public Player getPlayer() throws NoPlayerAssigned {
@@ -74,43 +80,44 @@ public class Cell extends JLabel implements MouseListener {
 
     @Override
     public void mouseClicked(MouseEvent e) {
+
+        // cell was not alive at start of round => can be selected
+        if (enabled){
+            if (!isAlive && roundKilled != Gameplay.getGeneration()){
+                setBackground(Gameplay.getActivePlayer().getPlayerColor());
+                isAlive = true;
+                playerOfCell = Gameplay.getActivePlayer();
+                roundChanged = Gameplay.getGeneration();
+            }
+
+            // cell has been born in this round -> can be killed again
+            else if (isAlive && playerOfCell == Gameplay.getActivePlayer() && roundChanged == Gameplay.getGeneration()) {
+                setBackground(Color.lightGray);
+                isAlive = false;
+                playerOfCell = null;
+                roundChanged = Gameplay.getGeneration() - 1;}
+
+            // cell belonged to other player at start of round -> can be killed
+            else if (isAlive && playerOfCell != Gameplay.getActivePlayer()) {
+                isAlive = false;
+                playerOfCell = null;
+                roundKilled = Gameplay.getGeneration() - 1;
+            }
+
+            // cell belonged to other player at start of round and has been killed-> can be revived
+            else if (!isAlive && roundKilled == Gameplay.getGeneration()){
+                setBackground(Gameplay.getActivePlayer().getPlayerColor());
+                isAlive = true;
+                playerOfCell = Gameplay.getActivePlayer();
+                roundChanged = Gameplay.getGeneration();
+            }
+        }
     }
 
     @Override
     public void mousePressed(MouseEvent e) {
 
-
-        // cell was not alive at start of round => can be selected
-        if (!isAlive && roundKilled != Gameplay.getGeneration()){
-            setBackground(Gameplay.getActivePlayer().getPlayerColor());
-            isAlive = true;
-            playerOfCell = Gameplay.getActivePlayer();
-            roundChanged = Gameplay.getGeneration();
-        }
-
-        // cell has been born in this round -> can be killed again
-        else if (isAlive && playerOfCell == Gameplay.getActivePlayer() && roundChanged == Gameplay.getGeneration()) {
-            setBackground(Color.lightGray);
-            isAlive = false;
-            playerOfCell = null;
-            roundChanged = Gameplay.getGeneration() - 1;}
-
-        // cell belonged to other player at start of round -> can be killed
-        else if (isAlive && playerOfCell != Gameplay.getActivePlayer()) {
-            isAlive = false;
-            playerOfCell = null;
-            roundKilled = Gameplay.getGeneration() - 1;
-        }
-
-        // cell belonged to other player at start of round and has been killed-> can be revived
-        else if (!isAlive && roundKilled == Gameplay.getGeneration()){
-            setBackground(Gameplay.getActivePlayer().getPlayerColor());
-            isAlive = true;
-            playerOfCell = Gameplay.getActivePlayer();
-            roundChanged = Gameplay.getGeneration();
-        }
-
-        }
+    }
 
     @Override
     public void mouseReleased(MouseEvent e) {
