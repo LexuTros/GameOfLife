@@ -2,7 +2,6 @@ package Interface;
 
 import DataStructure.Board;
 import DataStructure.Player;
-import Logic.Gameplay;
 
 import java.awt.*;
 

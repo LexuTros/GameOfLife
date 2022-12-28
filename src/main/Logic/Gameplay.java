@@ -18,30 +18,20 @@ public class Gameplay {
     static ArrayList<Color> colors;
     static Player player1;
     static Player player2;
-
     public static Board board;
 
 
     Gameplay(){
     }
-
-
     public static Player getActivePlayer(){
         return activePlayer;
             }
-
     public static int getGeneration(){
         return generation;
     }
 
     private static void welcomeDisplay(){
         GuiWelcome welcome = new GuiWelcome();
-            try {
-                Thread.sleep(2000);} // sleep for x miliseconds
-            catch (InterruptedException e) {
-                e.printStackTrace();}
-            welcome.dispose();
-            askPlayerNames();
     }
 
     public static void askPlayerNames(){
@@ -57,43 +47,54 @@ public class Gameplay {
         getStartingPlayer();
         startGame();
     }
-    private void getBoardSize(){}
-
 
     // TO-DO: get first player alphabetically
     private static void getStartingPlayer(){
         activePlayer = player1;
     }
 
+    public static void restartGame(){
+        startGame();
+    }
+
     private static void startGame(){
+        generation = 1;
         board = new Board(50,37);
         GuiGame game = new GuiGame(board, player1, player2, activePlayer);
     }
 
     public static void roundDone(){
-
-        System.out.println("DOONE!");
         Round.setBoardChangeEnabled(board, false);
+        checkWinner();
     }
 
-    private void nextGeneration(){}
-    private void checkWinner(){}
-    private void updateGui(){}
-    private static void winnerDisplay(){
-        GuiWinner win = new GuiWinner(player1);
-        try {
-            Thread.sleep(2500);} // sleep for x miliseconds
-        catch (InterruptedException e) {
-            e.printStackTrace();}
-        win.dispose();
-        askPlayerNames();
+    private static void checkWinner(){
+        boolean endOfGame = false;
+        String winnerName;
+        if (player1.getAliveCells() == 0 && player2.getAliveCells() == 0) {
+            endOfGame = true;
+            winnerDisplay("You are equally bad");
+        }
+        else if (player1.getAliveCells() == 0){
+            endOfGame = true;
+            winnerDisplay(player2.getPlayerName()+ ", you win!!");}
+        else if (player2.getAliveCells() == 0){
+            endOfGame = true;
+                winnerDisplay(player1.getPlayerName()+ ", you win!!");}
+        // next step
+        }
+
+    private static void updateGui(){}
+
+
+    private static void winnerDisplay(String winner){
+        GuiWinner win = new GuiWinner(winner);
     }
 
 
 
 
     public static void main(String[] args) {
-        generation = 1;
         welcomeDisplay();
     }
 

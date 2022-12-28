@@ -56,7 +56,7 @@ public class GuiGetPlayers extends GuiTemplate implements ActionListener {
         titleFrame.setText("Please enter your names and colors:");
         titleFrame.setFont(new Font("Comic Sans", Font.BOLD, 40));
         titleFrame.setHorizontalTextPosition(JLabel.CENTER);
-        titleFrame.setForeground(Color.white);
+        titleFrame.setForeground(Color.darkGray);
 
 
         JPanel panelTitleFrame = new JPanel();
@@ -78,6 +78,7 @@ public class GuiGetPlayers extends GuiTemplate implements ActionListener {
         textPlayerOne.addActionListener(this);
 
         buttonChooseColor1 = new JButton("pick a color");
+        buttonChooseColor1.setFont(new Font("Comic Sans", Font.BOLD, 15));
         buttonChooseColor1.addActionListener(this);
 
         panelGetPlayerOne.add(textPlayerOne, BorderLayout.WEST);
@@ -94,6 +95,7 @@ public class GuiGetPlayers extends GuiTemplate implements ActionListener {
         textPlayerTwo.addActionListener(this);
 
         buttonChooseColor2 = new JButton("pick a color");
+        buttonChooseColor2.setFont(new Font("Comic Sans", Font.BOLD, 15));
         buttonChooseColor2.addActionListener(this);
 
         panelGetPlayerTwo.add(textPlayerTwo, BorderLayout.WEST);
