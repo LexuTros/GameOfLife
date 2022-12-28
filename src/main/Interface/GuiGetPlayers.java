@@ -29,7 +29,7 @@ public class GuiGetPlayers extends GuiTemplate implements ActionListener {
         // Add standard Player color
 
         colors.add(Color.green);
-        colors.add(Color.green);
+        colors.add(Color.MAGENTA);
 
         // Panel continueButton
 
@@ -40,7 +40,6 @@ public class GuiGetPlayers extends GuiTemplate implements ActionListener {
         continueButton.setHorizontalTextPosition(JButton.CENTER);
         continueButton.setVerticalTextPosition(JButton.BOTTOM);
         continueButton.setFont(new Font("Comic Sans", Font.BOLD, 20));
-        continueButton.setBorder(BorderFactory.createCompoundBorder());
 
         JPanel panelButton = new JPanel();
         panelButton.setLayout(new BorderLayout());
@@ -52,7 +51,7 @@ public class GuiGetPlayers extends GuiTemplate implements ActionListener {
         // Panel Title Frame
 
         JLabel titleFrame = new JLabel();
-        titleFrame.setText("Please enter your names and colors:");
+        titleFrame.setText("Please enter your names and pick colors:");
         titleFrame.setFont(new Font("Comic Sans", Font.BOLD, 40));
         titleFrame.setHorizontalTextPosition(JLabel.CENTER);
         titleFrame.setForeground(Color.darkGray);
