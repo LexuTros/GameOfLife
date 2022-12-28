@@ -8,7 +8,7 @@ public class PanelPlayerBox extends JPanel {
     PanelPlayerBox(){
 
         this.setLayout(null);
-        this.setBorder(BorderFactory.createLineBorder(Color.blue, 2));
+        this.setBorder(BorderFactory.createLineBorder(Color.darkGray, 2));
         this.setOpaque(true);
         this.setVisible(true);
     }

@@ -1,7 +1,11 @@
 package Interface;
 
 import DataStructure.Player;
-import InterfaceHelpers.*;
+import InterfaceHelpers.LabelActiveCells;
+import InterfaceHelpers.LabelPlayerColor;
+import InterfaceHelpers.LabelPlayerName;
+import InterfaceHelpers.LabelTextActiveCells;
+import Logic.Gameplay;
 
 import javax.swing.*;
 import java.awt.*;
@@ -10,7 +14,9 @@ import java.awt.event.ActionListener;
 
 public class PanelInfos extends JPanel implements ActionListener {
 
-    PanelInfos(Player playerOne, Player playerTwo)
+    JButton buttonDone;
+
+    PanelInfos(Player playerOne, Player playerTwo, Player activePlayer)
     {
         this.setLayout(null);
 
@@ -20,7 +26,7 @@ public class PanelInfos extends JPanel implements ActionListener {
         generation.setFont(new Font("Comic Sans", Font.ITALIC, 20));
         generation.setForeground(Color.BLACK);
         generation.setBounds(10, 25, 160, 30);
-        generation.setText("Generation " + "133");
+        generation.setText("Generation " + Gameplay.getGeneration());
 
         // Box Player one
 
@@ -72,15 +78,15 @@ public class PanelInfos extends JPanel implements ActionListener {
         textActivePlayer.setBounds(20, 400, 160, 30);
         textActivePlayer.setText("active Player:");
 
-        JLabel activePlayer = new JLabel();
-        activePlayer.setFont(new Font("MV Boli", Font.BOLD, 20));
-        activePlayer.setForeground(Color.blue);
-        activePlayer.setBounds(20, 440, 160, 30);
-        activePlayer.setText("Player 3");
+        JLabel labelActivePlayer = new JLabel();
+        labelActivePlayer.setFont(new Font("MV Boli", Font.BOLD, 25));
+        labelActivePlayer.setForeground(Color.blue);
+        labelActivePlayer.setBounds(20, 440, 160, 30);
+        labelActivePlayer.setText(activePlayer.getPlayerName());
 
         // Button to continue game
 
-        JButton buttonDone = new JButton();
+        buttonDone = new JButton();
         buttonDone.addActionListener(this);
         buttonDone.setText("DONE!");
         buttonDone.setBounds(10,550,160 ,30 );
@@ -91,7 +97,7 @@ public class PanelInfos extends JPanel implements ActionListener {
 
         this.add(generation);
         this.add(textActivePlayer);
-        this.add(activePlayer);
+        this.add(labelActivePlayer);
         this.add(boxPlayerOne);
         this.add(boxPlayerTwo);
         this.add(buttonDone);
@@ -106,5 +112,10 @@ public class PanelInfos extends JPanel implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        if(e.getSource() == buttonDone){
+            buttonDone.setEnabled(false);
+            Gameplay.roundDone();
+        }
+
     }
 }
