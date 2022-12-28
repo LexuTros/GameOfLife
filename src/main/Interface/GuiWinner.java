@@ -89,10 +89,12 @@ public class GuiWinner extends GuiTemplate implements ActionListener {
         }
 
         if (e.getSource()==buttonRestart){
-            Gameplay.restartGame();;
+            this.dispose();
+            Gameplay.restartGame();
         }
 
         if (e.getSource()==buttonNewGame){
+            this.dispose();
             Gameplay.askPlayerNames();
         }
     }
