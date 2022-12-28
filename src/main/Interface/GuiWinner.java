@@ -9,10 +9,10 @@ import java.awt.event.ActionListener;
 
 public class GuiWinner extends GuiTemplate implements ActionListener {
 
-    JButton buttonExit;
-    JButton buttonBackToBoard;
-    JButton buttonRestart;
-    JButton buttonNewGame;
+    private final JButton buttonExit;
+    private final JButton buttonBackToBoard;
+    private final JButton buttonRestart;
+    private final JButton buttonNewGame;
 
     public GuiWinner(String winner) {
         this.setLayout(null);
@@ -71,12 +71,6 @@ public class GuiWinner extends GuiTemplate implements ActionListener {
         this.add(buttonNewGame);
 
         this.setVisible(true);
-    }
-
-
-    public static void main(String[] args) {
-        GuiWinner players = new GuiWinner("ich");
-
     }
 
     @Override

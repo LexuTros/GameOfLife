@@ -14,7 +14,7 @@ import java.awt.event.ActionListener;
 
 public class PanelInfos extends JPanel implements ActionListener {
 
-    JButton buttonDone;
+    private final JButton buttonDone;
 
     PanelInfos(Player playerOne, Player playerTwo, Player activePlayer)
     {

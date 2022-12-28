@@ -11,20 +11,18 @@ import java.awt.event.ActionListener;
 
 
 public class GuiGame extends GuiTemplate implements ActionListener {
-    JMenuBar menuBar;
-    JMenu optionMenu;
-    JMenuItem itemRestart;
-    JMenuItem itemNewGame;
-    JMenuItem itemExit;
+    private final JMenuItem itemRestart;
+    private final JMenuItem itemNewGame;
+    private final JMenuItem itemExit;
 
     public GuiGame(Board board, Player playerOne, Player playerTwo, Player activePlayer) {
         this.add(board,BorderLayout.CENTER);
         this.add(new PanelInfos(playerOne, playerTwo, activePlayer),BorderLayout.EAST);
 
-        menuBar = new JMenuBar();
+        JMenuBar menuBar = new JMenuBar();
         this.setJMenuBar(menuBar);
 
-        optionMenu = new JMenu("Navigation Menu");
+        JMenu optionMenu = new JMenu("Navigation Menu");
 
         itemRestart = new JMenuItem("Restart Game");
         itemNewGame = new JMenuItem("New Game");

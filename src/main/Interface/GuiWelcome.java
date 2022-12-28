@@ -9,7 +9,7 @@ import java.awt.event.ActionListener;
 
 public class GuiWelcome extends GuiTemplate implements ActionListener {
 
-    JButton buttonWelcome;
+    private final JButton buttonWelcome;
     public GuiWelcome() {
         this.setLayout(null);
         JLabel welcome = new JLabel();
