@@ -12,10 +12,12 @@ import java.util.ArrayList;
 public class Gameplay {
 
     private static Player activePlayer;
+    private static int round;
     static ArrayList<String> players;
     static ArrayList<Color> colors;
     static Player player1;
     static Player player2;
+
 
     Gameplay(){}
     // Initialisation
@@ -25,6 +27,10 @@ public class Gameplay {
     public static Player getActivePlayer(){
         return activePlayer;
             }
+
+    public static int getRound(){
+        return round;
+    }
 
     private static void welcomeDisplay(){
         GuiWelcome welcome = new GuiWelcome();
@@ -79,6 +85,8 @@ public class Gameplay {
 
 
     public static void main(String[] args) {
+
+        round = 0;
         welcomeDisplay();
     }
 

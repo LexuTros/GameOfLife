@@ -1,11 +1,10 @@
 package DataStructure;
 
 import Exceptions.*;
+import Logic.Gameplay;
 
 import javax.swing.*;
-import javax.swing.border.Border;
 import java.awt.*;
-import java.awt.Color;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
@@ -13,6 +12,7 @@ public class Cell extends JLabel implements MouseListener {
     private boolean isAlive;
     private Player playerOfCell;
     private int roundChanged;
+    private int roundKilled;
     private int aliveNeighbors;
 
     private int x;
@@ -26,8 +26,9 @@ public class Cell extends JLabel implements MouseListener {
         this.addMouseListener(this);
         this.x = x;
         this.y = y;
-        isAlive = false;
-        roundChanged = -1;
+        this.isAlive = false;
+        this.roundChanged = -1;
+        this.roundKilled =-1;
     }
 
     public boolean getIsAlive() {
@@ -82,8 +83,39 @@ public class Cell extends JLabel implements MouseListener {
 
     @Override
     public void mousePressed(MouseEvent e) {
-        System.out.println(x+","+y);
-    }
+
+
+        // cell was not alive at start of round => can be selected
+        if (!isAlive && roundKilled != Gameplay.getRound()){
+            setBackground(Gameplay.getActivePlayer().getPlayerColor());
+            isAlive = true;
+            playerOfCell = Gameplay.getActivePlayer();
+            roundChanged = Gameplay.getRound();
+        }
+
+        // cell has been born in this round -> can be killed again
+        else if (isAlive && playerOfCell == Gameplay.getActivePlayer() && roundChanged == Gameplay.getRound()) {
+            setBackground(Color.lightGray);
+            isAlive = false;
+            playerOfCell = null;
+            roundChanged = Gameplay.getRound() - 1;}
+
+        // cell belonged to other player at start of round -> can be killed
+        else if (isAlive && playerOfCell != Gameplay.getActivePlayer()) {
+            isAlive = false;
+            playerOfCell = null;
+            roundKilled = Gameplay.getRound() - 1;
+        }
+
+        // cell belonged to other player at start of round and has been killed-> can be revived
+        else if (!isAlive && roundKilled == Gameplay.getRound()){
+            setBackground(Gameplay.getActivePlayer().getPlayerColor());
+            isAlive = true;
+            playerOfCell = Gameplay.getActivePlayer();
+            roundChanged = Gameplay.getRound();
+        }
+
+        }
 
     @Override
     public void mouseReleased(MouseEvent e) {
