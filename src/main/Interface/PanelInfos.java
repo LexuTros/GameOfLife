@@ -1,6 +1,7 @@
 package Interface;
 
 import DataStructure.Player;
+import InterfaceHelpers.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,30 +14,57 @@ public class PanelInfos extends JPanel implements ActionListener {
     {
         this.setLayout(null);
 
+        // Generation
+
         JLabel generation = new JLabel();
         generation.setFont(new Font("Comic Sans", Font.ITALIC, 20));
         generation.setForeground(Color.BLACK);
         generation.setBounds(10, 25, 160, 30);
         generation.setText("Generation " + "133");
 
+        // Box Player one
+
         PanelPlayerBox boxPlayerOne = new PanelPlayerBox();
         boxPlayerOne.setBounds(10,100,160,80);
+
+        LabelPlayerName namePlayerOne = new LabelPlayerName();
+        namePlayerOne.setText(playerOne.getPlayerName());
+
+        LabelPlayerColor colorPlayerOne = new LabelPlayerColor();
+        colorPlayerOne.setBackground(playerOne.getPlayerColor());
+
+        LabelTextActiveCells textActiveCellsOne = new LabelTextActiveCells();
+
+        LabelActiveCells playerOneActiveCells = new LabelActiveCells();
+        playerOneActiveCells.setText(String.valueOf(playerOne.getAliveCells()));
+
+        boxPlayerOne.add(namePlayerOne);
+        boxPlayerOne.add(colorPlayerOne);
+        boxPlayerOne.add(textActiveCellsOne);
+        boxPlayerOne.add(playerOneActiveCells);
+
+        // Box Player two
+
         PanelPlayerBox boxPlayerTwo = new PanelPlayerBox();
         boxPlayerTwo.setBounds(10,200,160,80);
 
-        LabelNamePlayer namePlayerOne = new LabelNamePlayer();
-        namePlayerOne.setText(playerOne.getPlayerName());
-        LabelNamePlayer namePlayerTwo = new LabelNamePlayer();
+        LabelPlayerName namePlayerTwo = new LabelPlayerName();
         namePlayerTwo.setText(playerTwo.getPlayerName());
 
-        LabelTextActiveCells textActiveCellsOne = new LabelTextActiveCells();
+        LabelPlayerColor colorPlayerTwo = new LabelPlayerColor();
+        colorPlayerTwo.setBackground(playerTwo.getPlayerColor());
+
         LabelTextActiveCells textActiveCellsTwo = new LabelTextActiveCells();
 
-        LabelActiveCells playerOneActiveCells = new LabelActiveCells();
-        playerOneActiveCells.setText("50");
         LabelActiveCells playerTwoActiveCells = new LabelActiveCells();
-        playerTwoActiveCells.setText("50");
+        playerTwoActiveCells.setText(String.valueOf(playerTwo.getAliveCells()));
 
+        boxPlayerTwo.add(colorPlayerTwo);
+        boxPlayerTwo.add(namePlayerTwo);
+        boxPlayerTwo.add(textActiveCellsTwo);
+        boxPlayerTwo.add(playerTwoActiveCells);
+
+        // Active Player
 
         JLabel textActivePlayer = new JLabel();
         textActivePlayer.setFont(new Font("Comic Sans", Font.ITALIC, 20));
@@ -50,22 +78,25 @@ public class PanelInfos extends JPanel implements ActionListener {
         activePlayer.setBounds(20, 440, 160, 30);
         activePlayer.setText("Player 3");
 
-        boxPlayerOne.add(textActiveCellsOne);
-        boxPlayerOne.add(namePlayerOne);
-        boxPlayerOne.add(playerOneActiveCells);
-        boxPlayerTwo.add(textActiveCellsTwo);
-        boxPlayerTwo.add(namePlayerTwo);
-        boxPlayerTwo.add(playerTwoActiveCells);
+        // Button to continue game
 
-        ButtonGame button = new ButtonGame();
+        JButton buttonDone = new JButton();
+        buttonDone.addActionListener(this);
+        buttonDone.setText("DONE!");
+        buttonDone.setBounds(10,550,160 ,30 );
+        buttonDone.setFont(new Font("Comic Sans", Font.BOLD, 20));
+        buttonDone.setFocusable(false);
+
+        // add all components to frame
 
         this.add(generation);
         this.add(textActivePlayer);
         this.add(activePlayer);
         this.add(boxPlayerOne);
         this.add(boxPlayerTwo);
-        this.add(button);
+        this.add(buttonDone);
 
+        // settings of frame
 
         this.setPreferredSize(new Dimension(180,750));
         this.setBackground(Color.white);

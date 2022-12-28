@@ -4,15 +4,15 @@ import javax.swing.*;
 import java.awt.*;
 
 public class Player extends JLabel {
-    private String name;
-    private Color color;
+    private final String name;
+    private final Color color;
     private int aliveCells;
 
 
     public Player(String name, Color color) {
         this.name = name;
         this.color = color;
-        this.aliveCells = 0;;
+        this.aliveCells = 0;
 
     }
 

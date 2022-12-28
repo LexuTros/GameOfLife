@@ -12,6 +12,7 @@ import java.util.ArrayList;
 public class Gameplay {
 
     static ArrayList players;
+    static ArrayList colors;
     static Player player1;
     static Player player2;
 
@@ -34,9 +35,12 @@ public class Gameplay {
 
     public static void initializePlayers(){
         players = GuiGetPlayers.players;
+        colors = GuiGetPlayers.colors;
         System.out.println(players);
-        player1 = new Player((String) players.get(0), null);
-        player2 = new Player((String) players.get(1), null);
+        System.out.println(colors);
+
+        player1 = new Player((String) players.get(0), (Color) colors.get(0));
+        player2 = new Player((String) players.get(1), (Color) colors.get(1));
         startGame();
     }
     private void getBoardSize(){}
