@@ -88,7 +88,7 @@ public class Gameplay {
 
     public static void main(String[] args) {
 
-        generation = 0;
+        generation = 1;
         welcomeDisplay();
     }
 

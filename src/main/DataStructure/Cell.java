@@ -15,17 +15,12 @@ public class Cell extends JLabel implements MouseListener {
     private int roundKilled;
     private int aliveNeighbors;
 
-    private int x;
-    private int y;
-
-    public Cell(int x, int y) {
+    public Cell() {
         this.setLayout(new FlowLayout());
         this.setBackground(Color.LIGHT_GRAY);
         this.setOpaque(true);
         this.setBorder(BorderFactory.createLineBorder(Color.darkGray, 1));
         this.addMouseListener(this);
-        this.x = x;
-        this.y = y;
         this.isAlive = false;
         this.roundChanged = -1;
         this.roundKilled =-1;
