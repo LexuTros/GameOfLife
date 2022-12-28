@@ -12,12 +12,11 @@ import java.util.ArrayList;
 public class GuiGetPlayers extends GuiTemplate implements ActionListener {
 
 
-    JButton continueButton;
-    JButton buttonChooseColor1;
-    JButton buttonChooseColor2;
-    JLabel titleFrame;
-    TextFieldlGetPlayerName textPlayerOne;
-    TextFieldlGetPlayerName textPlayerTwo;
+    private final JButton continueButton;
+    private final JButton buttonChooseColor1;
+    private final JButton buttonChooseColor2;
+    private final TextFieldlGetPlayerName textPlayerOne;
+    private final TextFieldlGetPlayerName textPlayerTwo;
 
     public static ArrayList<String> players;
     public static ArrayList<Color> colors = new ArrayList<>();
@@ -52,7 +51,7 @@ public class GuiGetPlayers extends GuiTemplate implements ActionListener {
 
         // Panel Title Frame
 
-        titleFrame = new JLabel();
+        JLabel titleFrame = new JLabel();
         titleFrame.setText("Please enter your names and colors:");
         titleFrame.setFont(new Font("Comic Sans", Font.BOLD, 40));
         titleFrame.setHorizontalTextPosition(JLabel.CENTER);
