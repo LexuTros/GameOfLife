@@ -86,33 +86,33 @@ public class Cell extends JLabel implements MouseListener {
 
 
         // cell was not alive at start of round => can be selected
-        if (!isAlive && roundKilled != Gameplay.getRound()){
+        if (!isAlive && roundKilled != Gameplay.getGeneration()){
             setBackground(Gameplay.getActivePlayer().getPlayerColor());
             isAlive = true;
             playerOfCell = Gameplay.getActivePlayer();
-            roundChanged = Gameplay.getRound();
+            roundChanged = Gameplay.getGeneration();
         }
 
         // cell has been born in this round -> can be killed again
-        else if (isAlive && playerOfCell == Gameplay.getActivePlayer() && roundChanged == Gameplay.getRound()) {
+        else if (isAlive && playerOfCell == Gameplay.getActivePlayer() && roundChanged == Gameplay.getGeneration()) {
             setBackground(Color.lightGray);
             isAlive = false;
             playerOfCell = null;
-            roundChanged = Gameplay.getRound() - 1;}
+            roundChanged = Gameplay.getGeneration() - 1;}
 
         // cell belonged to other player at start of round -> can be killed
         else if (isAlive && playerOfCell != Gameplay.getActivePlayer()) {
             isAlive = false;
             playerOfCell = null;
-            roundKilled = Gameplay.getRound() - 1;
+            roundKilled = Gameplay.getGeneration() - 1;
         }
 
         // cell belonged to other player at start of round and has been killed-> can be revived
-        else if (!isAlive && roundKilled == Gameplay.getRound()){
+        else if (!isAlive && roundKilled == Gameplay.getGeneration()){
             setBackground(Gameplay.getActivePlayer().getPlayerColor());
             isAlive = true;
             playerOfCell = Gameplay.getActivePlayer();
-            roundChanged = Gameplay.getRound();
+            roundChanged = Gameplay.getGeneration();
         }
 
         }

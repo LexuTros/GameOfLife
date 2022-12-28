@@ -1,7 +1,11 @@
 package Interface;
 
 import DataStructure.Player;
-import InterfaceHelpers.*;
+import InterfaceHelpers.LabelActiveCells;
+import InterfaceHelpers.LabelPlayerColor;
+import InterfaceHelpers.LabelPlayerName;
+import InterfaceHelpers.LabelTextActiveCells;
+import Logic.Gameplay;
 
 import javax.swing.*;
 import java.awt.*;
@@ -9,6 +13,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class PanelInfos extends JPanel implements ActionListener {
+
+    JButton buttonDone;
 
     PanelInfos(Player playerOne, Player playerTwo, Player activePlayer)
     {
@@ -20,7 +26,7 @@ public class PanelInfos extends JPanel implements ActionListener {
         generation.setFont(new Font("Comic Sans", Font.ITALIC, 20));
         generation.setForeground(Color.BLACK);
         generation.setBounds(10, 25, 160, 30);
-        generation.setText("Generation " + "133");
+        generation.setText("Generation " + Gameplay.getGeneration());
 
         // Box Player one
 
@@ -80,7 +86,7 @@ public class PanelInfos extends JPanel implements ActionListener {
 
         // Button to continue game
 
-        JButton buttonDone = new JButton();
+        buttonDone = new JButton();
         buttonDone.addActionListener(this);
         buttonDone.setText("DONE!");
         buttonDone.setBounds(10,550,160 ,30 );
@@ -106,5 +112,10 @@ public class PanelInfos extends JPanel implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        if(e.getSource() == buttonDone){
+            buttonDone.setEnabled(false);
+            Gameplay.roundDone();
+        }
+
     }
 }

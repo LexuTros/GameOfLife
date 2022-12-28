@@ -12,24 +12,22 @@ import java.util.ArrayList;
 public class Gameplay {
 
     private static Player activePlayer;
-    private static int round;
+    private static int generation;
     static ArrayList<String> players;
     static ArrayList<Color> colors;
     static Player player1;
     static Player player2;
 
 
-    Gameplay(){}
-    // Initialisation
-
-    // TO-DO
+    Gameplay(){
+    }
 
     public static Player getActivePlayer(){
         return activePlayer;
             }
 
-    public static int getRound(){
-        return round;
+    public static int getGeneration(){
+        return generation;
     }
 
     private static void welcomeDisplay(){
@@ -66,6 +64,12 @@ public class Gameplay {
     private static void startGame(){
         GuiGame game = new GuiGame(player1, player2, activePlayer);
     }
+
+    public static void roundDone(){
+        System.out.println("DOONE!");
+
+    }
+
     private void nextGeneration(){}
     private void checkWinner(){}
     private void updateGui(){}
@@ -84,7 +88,7 @@ public class Gameplay {
 
     public static void main(String[] args) {
 
-        round = 0;
+        generation = 0;
         welcomeDisplay();
     }
 
