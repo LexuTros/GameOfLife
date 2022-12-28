@@ -111,14 +111,12 @@ public class GuiGetPlayers extends GuiTemplate implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == buttonChooseColor1){
-            JColorChooser colorChooser = new JColorChooser();
             Color color = JColorChooser.showDialog(null, "Pick a color", Color.black);
             buttonChooseColor1.setBackground(color);
             colors.set(0, color);
         }
 
         if (e.getSource() == buttonChooseColor2){
-            JColorChooser colorChooser = new JColorChooser();
             Color color = JColorChooser.showDialog(null, "Pick a color", Color.black);
             buttonChooseColor2.setBackground(color);
             colors.set(1, color);
