@@ -40,7 +40,6 @@ public class GuiGetPlayers extends GuiTemplate implements ActionListener {
         continueButton.setHorizontalTextPosition(JButton.CENTER);
         continueButton.setVerticalTextPosition(JButton.BOTTOM);
         continueButton.setFont(new Font("Comic Sans", Font.BOLD, 20));
-        continueButton.setBorder(BorderFactory.createCompoundBorder());
 
         JPanel panelButton = new JPanel();
         panelButton.setLayout(new BorderLayout());

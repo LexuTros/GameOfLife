@@ -18,6 +18,7 @@ public class GuiWelcome extends GuiTemplate implements ActionListener {
         welcome.setBounds(200, 250,1000,120);
         buttonWelcome = new JButton();
 
+        buttonWelcome.setFocusable(false);
         buttonWelcome.addActionListener(this);
         buttonWelcome.setText("okaaaay, let's go!");
         buttonWelcome.setHorizontalTextPosition(JButton.CENTER);

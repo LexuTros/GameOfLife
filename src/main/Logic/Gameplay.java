@@ -73,7 +73,7 @@ public class Gameplay {
         String winnerName;
         if (player1.getAliveCells() == 0 && player2.getAliveCells() == 0) {
             endOfGame = true;
-            winnerDisplay("You are equally bad");
+            winnerDisplay("You are both equally bad");
         }
         else if (player1.getAliveCells() == 0){
             endOfGame = true;
