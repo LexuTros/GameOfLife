@@ -1,5 +1,6 @@
 package Interface;
 
+import InterfaceHelpers.TextFieldlGetPlayerName;
 import Logic.Gameplay;
 
 import javax.swing.*;
@@ -11,38 +12,48 @@ import java.util.ArrayList;
 public class GuiGetPlayers extends GuiTemplate implements ActionListener {
 
 
-    JButton button;
+    JButton continueButton;
+    JButton buttonChooseColor1;
+    JButton buttonChooseColor2;
     JLabel titleFrame;
-    JTextField playerOne;
-    JTextField playerTwo;
+    TextFieldlGetPlayerName textPlayerOne;
+    TextFieldlGetPlayerName textPlayerTwo;
+
     public static ArrayList<String> players;
+    public static ArrayList<Color> colors = new ArrayList<>();
 
     public GuiGetPlayers(){
 
+
         this.setLayout(null);
 
-        // Panel Button
+        // Add standard Player color
 
-        button = new JButton();
-        button.addActionListener(this);
+        colors.add(Color.green);
+        colors.add(Color.green);
 
-        button.setText("Click to continue");
-        button.setHorizontalTextPosition(JButton.CENTER);
-        button.setVerticalTextPosition(JButton.BOTTOM);
-        button.setFont(new Font("Comic Sans", Font.BOLD, 20));
-        button.setBorder(BorderFactory.createCompoundBorder());
+        // Panel continueButton
+
+        continueButton = new JButton();
+        continueButton.addActionListener(this);
+
+        continueButton.setText("Click to continue");
+        continueButton.setHorizontalTextPosition(JButton.CENTER);
+        continueButton.setVerticalTextPosition(JButton.BOTTOM);
+        continueButton.setFont(new Font("Comic Sans", Font.BOLD, 20));
+        continueButton.setBorder(BorderFactory.createCompoundBorder());
 
         JPanel panelButton = new JPanel();
         panelButton.setLayout(new BorderLayout());
         panelButton.setBounds(200,500,250,80);
 
 
-        panelButton.add(button);
+        panelButton.add(continueButton);
 
         // Panel Title Frame
 
         titleFrame = new JLabel();
-        titleFrame.setText("Please enter your names:");
+        titleFrame.setText("Please enter your names and colors:");
         titleFrame.setFont(new Font("Comic Sans", Font.BOLD, 40));
         titleFrame.setHorizontalTextPosition(JLabel.CENTER);
         titleFrame.setForeground(Color.white);
@@ -58,35 +69,35 @@ public class GuiGetPlayers extends GuiTemplate implements ActionListener {
 
         // Panel Player One
 
-        playerOne = new JTextField();
-        playerOne.setFont(new Font("Consolas", Font.PLAIN, 35));
-        playerOne.setForeground(Color.green);
-        playerOne.setBackground(Color.black);
-        playerOne.setCaretColor(Color.white);
-        playerOne.setText("Player 1");
-        playerOne.addActionListener(this);
-
         JPanel panelGetPlayerOne = new JPanel();
         panelGetPlayerOne.setLayout(new BorderLayout());
-        panelGetPlayerOne.setBounds(200,250,400,80);
+        panelGetPlayerOne.setBounds(200,250,550,80);
 
+        textPlayerOne = new TextFieldlGetPlayerName();
+        textPlayerOne.setText("Player 1");
+        textPlayerOne.addActionListener(this);
 
-        panelGetPlayerOne.add(playerOne);
+        buttonChooseColor1 = new JButton("pick a color");
+        buttonChooseColor1.addActionListener(this);
 
-        // Panel Player One
+        panelGetPlayerOne.add(textPlayerOne, BorderLayout.WEST);
+        panelGetPlayerOne.add(buttonChooseColor1, BorderLayout.CENTER);
 
-        playerTwo = new JTextField();
-        playerTwo.setFont(new Font("Consolas", Font.PLAIN, 35));
-        playerTwo.setForeground(Color.green);
-        playerTwo.setBackground(Color.black);
-        playerTwo.setCaretColor(Color.white);
-        playerTwo.setText("Player 2");
+        // Panel Player Two
 
         JPanel panelGetPlayerTwo = new JPanel();
         panelGetPlayerTwo.setLayout(new BorderLayout());
-        panelGetPlayerTwo.setBounds(200,350,400,80);
+        panelGetPlayerTwo.setBounds(200,350,550,80);
 
-        panelGetPlayerTwo.add(playerTwo);
+        textPlayerTwo = new TextFieldlGetPlayerName();
+        textPlayerTwo.setText("Player 2");
+        textPlayerTwo.addActionListener(this);
+
+        buttonChooseColor2 = new JButton("pick a color");
+        buttonChooseColor2.addActionListener(this);
+
+        panelGetPlayerTwo.add(textPlayerTwo, BorderLayout.WEST);
+        panelGetPlayerTwo.add(buttonChooseColor2, BorderLayout.CENTER);
 
         this.add(panelTitleFrame);
         this.add(panelGetPlayerOne);
@@ -99,10 +110,24 @@ public class GuiGetPlayers extends GuiTemplate implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == button) {
+        if (e.getSource() == buttonChooseColor1){
+            JColorChooser colorChooser = new JColorChooser();
+            Color color = JColorChooser.showDialog(null, "Pick a color", Color.black);
+            buttonChooseColor1.setBackground(color);
+            colors.set(0, color);
+        }
+
+        if (e.getSource() == buttonChooseColor2){
+            JColorChooser colorChooser = new JColorChooser();
+            Color color = JColorChooser.showDialog(null, "Pick a color", Color.black);
+            buttonChooseColor2.setBackground(color);
+            colors.set(1, color);
+        }
+
+        if (e.getSource() == continueButton) {
             players = new ArrayList<>();
-            players.add(0, playerOne.getText());
-            players.add(1, playerTwo.getText());
+            players.add(0, textPlayerOne.getText());
+            players.add(1, textPlayerTwo.getText());
             this.dispose();
             Gameplay.initializePlayers();
         }

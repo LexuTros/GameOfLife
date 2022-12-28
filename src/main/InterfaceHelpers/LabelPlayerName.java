@@ -1,10 +1,10 @@
-package Interface;
+package InterfaceHelpers;
 
 import javax.swing.*;
 import java.awt.*;
 
-public class LabelNamePlayer extends JLabel {
-    LabelNamePlayer() {
+public class LabelPlayerName extends JLabel {
+    public LabelPlayerName() {
         this.setBounds(10, 10, 120, 30);
         this.setForeground(Color.BLUE);
         this.setFont(new Font("MV Boli", Font.BOLD, 20));
