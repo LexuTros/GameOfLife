@@ -1,5 +1,6 @@
 package Logic;
 
+import DataStructure.Board;
 import DataStructure.Player;
 import Interface.GuiGame;
 import Interface.GuiGetPlayers;
@@ -18,9 +19,12 @@ public class Gameplay {
     static Player player1;
     static Player player2;
 
+    public static Board board;
+
 
     Gameplay(){
     }
+
 
     public static Player getActivePlayer(){
         return activePlayer;
@@ -62,10 +66,12 @@ public class Gameplay {
     }
 
     private static void startGame(){
-        GuiGame game = new GuiGame(player1, player2, activePlayer);
+        board = new Board();
+        GuiGame game = new GuiGame(board, player1, player2, activePlayer);
     }
 
     public static void roundDone(){
+
         System.out.println("DOONE!");
 
     }
@@ -87,7 +93,6 @@ public class Gameplay {
 
 
     public static void main(String[] args) {
-
         generation = 1;
         welcomeDisplay();
     }
