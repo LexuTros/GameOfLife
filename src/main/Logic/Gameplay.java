@@ -66,14 +66,14 @@ public class Gameplay {
     }
 
     private static void startGame(){
-        board = new Board();
+        board = new Board(50,37);
         GuiGame game = new GuiGame(board, player1, player2, activePlayer);
     }
 
     public static void roundDone(){
 
         System.out.println("DOONE!");
-
+        Round.setBoardChangeEnabled(board, false);
     }
 
     private void nextGeneration(){}
