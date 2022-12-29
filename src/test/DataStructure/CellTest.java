@@ -126,4 +126,11 @@ class CellTest {
         }
     }
 
+    @Test
+    public void setEnabledChangeTest() {
+        Cell testCell = new Cell();
+        testCell.setEnabledChange(true);
+        assertTrue(testCell.enabled);
+    }
+    
 }
