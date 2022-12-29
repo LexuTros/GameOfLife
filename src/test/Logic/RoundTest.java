@@ -21,12 +21,9 @@ public class RoundTest {
 
     @Test
     public void simulateGenerationCorrectReproductionIsAliveTest() throws InvalidCoordinate, NoPlayerAssigned, TooManyAliveNeighbors, NegativeAmountOfNeighbors {
-        board.getField(1,1).setIsAlive(true);
-        board.getField(1,1).setPlayer(playerOne);
-        board.getField(1,2).setIsAlive(true);
-        board.getField(1,2).setPlayer(playerOne);
-        board.getField(2,1).setIsAlive(true);
-        board.getField(2,1).setPlayer(playerTwo);
+        board.getField(1,1).reviveCell(playerOne);
+        board.getField(1,2).reviveCell(playerOne);
+        board.getField(2,1).reviveCell(playerTwo);
 
         simulateGeneration(board);
 
@@ -35,12 +32,9 @@ public class RoundTest {
 
     @Test
     public void simulateGenerationCorrectReproductionOwnerTest() throws InvalidCoordinate, NoPlayerAssigned, TooManyAliveNeighbors, NegativeAmountOfNeighbors {
-        board.getField(1,1).setIsAlive(true);
-        board.getField(1,1).setPlayer(playerOne);
-        board.getField(1,2).setIsAlive(true);
-        board.getField(1,2).setPlayer(playerTwo);
-        board.getField(2,1).setIsAlive(true);
-        board.getField(2,1).setPlayer(playerTwo);
+        board.getField(1,1).reviveCell(playerOne);
+        board.getField(1,2).reviveCell(playerTwo);
+        board.getField(2,1).reviveCell(playerTwo);
 
         simulateGeneration(board);
 
@@ -49,10 +43,8 @@ public class RoundTest {
 
     @Test
     public void simulateGenerationNoReproductionIsAliveTest() throws InvalidCoordinate, NoPlayerAssigned, TooManyAliveNeighbors, NegativeAmountOfNeighbors {
-        board.getField(1,1).setIsAlive(true);
-        board.getField(1,1).setPlayer(playerOne);
-        board.getField(2,1).setIsAlive(true);
-        board.getField(2,1).setPlayer(playerTwo);
+        board.getField(1,1).reviveCell(playerOne);
+        board.getField(2,1).reviveCell(playerTwo);
 
         simulateGeneration(board);
 
@@ -64,10 +56,8 @@ public class RoundTest {
 
     @Test
     public void simulateGenerationUnderpopulationDeathTest() throws InvalidCoordinate, NoPlayerAssigned, TooManyAliveNeighbors, NegativeAmountOfNeighbors {
-        board.getField(1,1).setIsAlive(true);
-        board.getField(1,1).setPlayer(playerOne);
-        board.getField(2,1).setIsAlive(true);
-        board.getField(2,1).setPlayer(playerTwo);
+        board.getField(1,1).reviveCell(playerOne);
+        board.getField(2,1).reviveCell(playerTwo);
 
         simulateGeneration(board);
 
@@ -78,20 +68,15 @@ public class RoundTest {
 
     @Test
     public void simulateGenerationOverpopulationDeathTest() throws InvalidCoordinate, NoPlayerAssigned, TooManyAliveNeighbors, NegativeAmountOfNeighbors {
-        board.getField(1,2).setIsAlive(true);
-        board.getField(1,2).setPlayer(playerOne);
+        board.getField(1,2).reviveCell(playerOne);
 
-        board.getField(2,1).setIsAlive(true);
-        board.getField(2,1).setPlayer(playerOne);
+        board.getField(2,1).reviveCell(playerOne);
 
-        board.getField(2,2).setIsAlive(true);
-        board.getField(2,2).setPlayer(playerOne);
+        board.getField(2,2).reviveCell(playerOne);
 
-        board.getField(2,3).setIsAlive(true);
-        board.getField(2,3).setPlayer(playerOne);
+        board.getField(2,3).reviveCell(playerOne);
 
-        board.getField(3,2).setIsAlive(true);
-        board.getField(3,2).setPlayer(playerOne);
+        board.getField(3,2).reviveCell(playerOne);
 
         simulateGeneration(board);
 
@@ -101,14 +86,10 @@ public class RoundTest {
 
     @Test
     public void simulateGenerationPopulationMaintenanceTest() throws InvalidCoordinate, NoPlayerAssigned, TooManyAliveNeighbors, NegativeAmountOfNeighbors {
-        board.getField(1,1).setIsAlive(true);
-        board.getField(1,1).setPlayer(playerOne);
-        board.getField(2,1).setIsAlive(true);
-        board.getField(2,1).setPlayer(playerTwo);
-        board.getField(1,2).setIsAlive(true);
-        board.getField(1,2).setPlayer(playerOne);
-        board.getField(2,2).setIsAlive(true);
-        board.getField(2,2).setPlayer(playerTwo);
+        board.getField(1,1).reviveCell(playerOne);
+        board.getField(2,1).reviveCell(playerTwo);
+        board.getField(1,2).reviveCell(playerOne);
+        board.getField(2,2).reviveCell(playerTwo);
 
         simulateGeneration(board);
 

@@ -115,6 +115,8 @@ public class PanelInfos extends JPanel implements ActionListener {
         if(e.getSource() == buttonDone){
             buttonDone.setEnabled(false);
             Gameplay.roundDone();
+            // ToDo: Update Panel Infos
+            buttonDone.setEnabled(true);
         }
 
     }

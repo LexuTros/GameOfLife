@@ -14,21 +14,6 @@ import java.util.List;
 
 public class Round {
 
-    public static void setBoardChangeEnabled(Board board, boolean enabled) {
-        for (int x = 1; x <= board.width; x++) {
-             for (int y = 1; y <= board.height; y++) {
-                   Cell cell = null;
-                try {
-                    cell = board.getField(x, y);
-                } catch (InvalidCoordinate e) {
-                    System.out.println("Error");
-                }
-                 assert cell != null;
-                 cell.setEnabledChange(enabled);
-            }
-        }
-    }
-
     private static void determineCellFuture(Board board, int xCoordinate, int yCoordinate) throws InvalidCoordinate, NoPlayerAssigned, TooManyAliveNeighbors, NegativeAmountOfNeighbors {
         Cell currentCell = board.getField(xCoordinate, yCoordinate);
         int neighborCounter = 0;
@@ -57,7 +42,7 @@ public class Round {
         if (!currentCell.getIsAlive() && neighborCounter == 3) {
             for (Player neighborOwner : aliveNeighborOwners) {
                 if (Collections.frequency(aliveNeighborOwners, neighborOwner) >= 2) {
-                    currentCell.setPlayer(neighborOwner);
+                    currentCell.setFuturePlayer(neighborOwner);
                     return;
                 }
             }
@@ -66,15 +51,15 @@ public class Round {
 
 
 
-    private static void progressCell(Cell cell){
+    private static void progressCell(Cell cell) throws NoPlayerAssigned {
         int neighbors = cell.getAliveNeighbors();
         if (cell.getIsAlive()) {
             if (neighbors < 2 || neighbors > 3) {
-                cell.setIsAlive(false);
+                cell.killCell();
             }
         } else {
             if (neighbors == 3) {
-                cell.setIsAlive(true);
+                cell.reviveCell(cell.getFuturePlayer());
             }
         }
     }

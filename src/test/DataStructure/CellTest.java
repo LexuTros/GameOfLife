@@ -18,7 +18,7 @@ class CellTest {
     @Test
     public void setIsAliveTest() {
         Cell testCell = new Cell();
-        testCell.setIsAlive(true);
+        testCell.reviveCell(new Player("Günter", Color.green));
         assertTrue(testCell.getIsAlive());
     }
 
