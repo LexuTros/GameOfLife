@@ -2,32 +2,51 @@ package Logic;
 
 import DataStructure.Board;
 import DataStructure.Player;
+import Exceptions.InvalidCoordinate;
+import Exceptions.NegativeAmountOfNeighbors;
+import Exceptions.NoPlayerAssigned;
+import Exceptions.TooManyAliveNeighbors;
 import Interface.GuiGame;
 import Interface.GuiGetPlayers;
 import Interface.GuiWelcome;
 import Interface.GuiWinner;
+import com.sun.net.httpserver.HttpExchange;
 
 import java.awt.*;
 import java.util.ArrayList;
 
 public class Gameplay {
-
-    private static Player activePlayer;
-    private static int generation;
+    protected static Player activePlayer;
+    protected static int generation;
+    protected static boolean toKill;
+    protected static boolean toCreate;
     static ArrayList<String> players;
     static ArrayList<Color> colors;
     static Player player1;
     static Player player2;
     public static Board board;
 
+    Gameplay(){}
 
-    Gameplay(){
-    }
     public static Player getActivePlayer(){
         return activePlayer;
             }
     public static int getGeneration(){
         return generation;
+    }
+
+    public static boolean getToKill(){
+        return toKill;
+    }
+    public static void setToKill(boolean changeToKill){
+        toKill = changeToKill;
+    }
+
+    public static boolean getToCreate(){
+        return toCreate;
+    }
+    public static void setToCreate(boolean changeToKill){
+        toCreate = changeToKill;
     }
 
     private static void welcomeDisplay(){
@@ -59,12 +78,25 @@ public class Gameplay {
 
     private static void startGame(){
         generation = 1;
+        toKill = true;
+        toCreate = true;
         board = new Board(50,37);
         GuiGame game = new GuiGame(board, player1, player2, activePlayer);
     }
 
     public static void roundDone(){
         Round.setBoardChangeEnabled(board, false);
+        try {
+            Round.simulateGeneration(board);
+        } catch (NoPlayerAssigned e) {
+            throw new RuntimeException(e);
+        } catch (TooManyAliveNeighbors e) {
+            throw new RuntimeException(e);
+        } catch (NegativeAmountOfNeighbors e) {
+            throw new RuntimeException(e);
+        } catch (InvalidCoordinate e) {
+            throw new RuntimeException(e);
+        }
         checkWinner();
     }
 
@@ -86,13 +118,9 @@ public class Gameplay {
 
     private static void updateGui(){}
 
-
     private static void winnerDisplay(String winner){
         GuiWinner win = new GuiWinner(winner);
     }
-
-
-
 
     public static void main(String[] args) {
         welcomeDisplay();
