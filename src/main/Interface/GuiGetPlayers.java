@@ -1,6 +1,6 @@
 package Interface;
 
-import InterfaceHelpers.TextFieldlGetPlayerName;
+import InterfaceHelpers.TextFieldGetPlayerName;
 import Logic.Gameplay;
 
 import javax.swing.*;
@@ -15,8 +15,8 @@ public class GuiGetPlayers extends GuiTemplate implements ActionListener {
     private final JButton continueButton;
     private final JButton buttonChooseColor1;
     private final JButton buttonChooseColor2;
-    private final TextFieldlGetPlayerName textPlayerOne;
-    private final TextFieldlGetPlayerName textPlayerTwo;
+    private final TextFieldGetPlayerName textPlayerOne;
+    private final TextFieldGetPlayerName textPlayerTwo;
 
     public static ArrayList<String> players;
     public static ArrayList<Color> colors = new ArrayList<>();
@@ -71,7 +71,7 @@ public class GuiGetPlayers extends GuiTemplate implements ActionListener {
         panelGetPlayerOne.setLayout(new BorderLayout());
         panelGetPlayerOne.setBounds(200,250,550,80);
 
-        textPlayerOne = new TextFieldlGetPlayerName();
+        textPlayerOne = new TextFieldGetPlayerName();
         textPlayerOne.setText("Player 1");
         textPlayerOne.addActionListener(this);
 
@@ -88,7 +88,7 @@ public class GuiGetPlayers extends GuiTemplate implements ActionListener {
         panelGetPlayerTwo.setLayout(new BorderLayout());
         panelGetPlayerTwo.setBounds(200,350,550,80);
 
-        textPlayerTwo = new TextFieldlGetPlayerName();
+        textPlayerTwo = new TextFieldGetPlayerName();
         textPlayerTwo.setText("Player 2");
         textPlayerTwo.addActionListener(this);
 

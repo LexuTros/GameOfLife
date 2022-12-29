@@ -14,7 +14,7 @@ public class Cell extends JLabel implements MouseListener {
     private int roundChanged;
     private int roundKilled;
     private int aliveNeighbors;
-    protected boolean enabled;
+    private boolean enabled;
 
     public Cell() {
         this.setLayout(new FlowLayout());

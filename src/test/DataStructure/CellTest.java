@@ -130,7 +130,7 @@ class CellTest {
     public void setEnabledChangeTest() {
         Cell testCell = new Cell();
         testCell.setEnabledChange(true);
-        assertTrue(testCell.enabled);
+        assertTrue(testCell.isEnabled());
     }
-    
+
 }
