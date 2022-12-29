@@ -81,6 +81,11 @@ public class Cell extends JLabel implements MouseListener {
     @Override
     public void mouseClicked(MouseEvent e) {
 
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+
         // cell was not alive at start of round => can be selected
         if (enabled){
             if (!isAlive && roundKilled != Gameplay.getGeneration()){
@@ -112,11 +117,6 @@ public class Cell extends JLabel implements MouseListener {
                 roundChanged = Gameplay.getGeneration();
             }
         }
-    }
-
-    @Override
-    public void mousePressed(MouseEvent e) {
-
     }
 
     @Override
