@@ -4,48 +4,46 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-public class GameplayTest extends Gameplay{
+public class GameplayTest {
     @Test
     public void testGetActivePlayer() {
-        activePlayer = player1;
-        assertEquals(player1, getActivePlayer());
+        Gameplay.activePlayer = Gameplay.player1;
+        assertEquals(Gameplay.player1, Gameplay.getActivePlayer());
     }
 
     @Test
     public void testGetGeneration() {
 
-        generation = 5;
-        assertEquals(5, getGeneration());
+        Gameplay.generation = 10;
+        assertEquals(10, Gameplay.getGeneration());
     }
 
     @Test
     public void testGetToKill() {
-        toKill = true;
-        assertTrue(getToKill());
+        Gameplay.toKill = true;
+        assertTrue(Gameplay.getToKill());
 
-        toKill = false;
-        assertFalse(getToKill());
+        Gameplay.toKill = false;
+        assertFalse(Gameplay.getToKill());
     }
 
     @Test
     public void testSetToKill() {
-        toKill = true;
-        assertTrue(toKill);
-
-        toKill = false;
-        assertFalse(toKill);
+        assertFalse(Gameplay.toKill);
+        Gameplay.setToKill(true);
+        assertTrue(Gameplay.toKill);
     }
 
     @Test
     public void testGetToCreate() {
-        toCreate = true;
-        assertTrue(getToCreate());
+        Gameplay.toCreate = true;
+        assertTrue(Gameplay.getToCreate());
     }
 
     @Test
     public void testSetToCreate() {
-        setToCreate(true);
-        assertTrue(toCreate);
+        Gameplay.setToCreate(true);
+        assertTrue(Gameplay.toCreate);
     }
 
 }

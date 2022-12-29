@@ -16,10 +16,8 @@ import java.awt.*;
 import java.util.ArrayList;
 
 public class Gameplay {
-
     protected static Player activePlayer;
     protected static int generation;
-
     protected static boolean toKill;
     protected static boolean toCreate;
     static ArrayList<String> players;
@@ -28,9 +26,8 @@ public class Gameplay {
     static Player player2;
     public static Board board;
 
+    Gameplay(){}
 
-    Gameplay(){
-    }
     public static Player getActivePlayer(){
         return activePlayer;
             }
@@ -51,10 +48,6 @@ public class Gameplay {
     public static void setToCreate(boolean changeToKill){
         toCreate = changeToKill;
     }
-
-
-
-
 
     private static void welcomeDisplay(){
         GuiWelcome welcome = new GuiWelcome();
@@ -125,13 +118,9 @@ public class Gameplay {
 
     private static void updateGui(){}
 
-
     private static void winnerDisplay(String winner){
         GuiWinner win = new GuiWinner(winner);
     }
-
-
-
 
     public static void main(String[] args) {
         welcomeDisplay();
