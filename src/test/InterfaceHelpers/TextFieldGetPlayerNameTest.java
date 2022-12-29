@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class TextFieldGetPlayerNameTest {
     @Test
-    public void testTextFieldProperties() {
+    public void constructorTest() {
         TextFieldGetPlayerName tfgpn = new TextFieldGetPlayerName();
         Font f = tfgpn.getFont();
 
