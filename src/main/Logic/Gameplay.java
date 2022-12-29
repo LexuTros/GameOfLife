@@ -17,11 +17,11 @@ import java.util.ArrayList;
 
 public class Gameplay {
 
-    private static Player activePlayer;
-    private static int generation;
+    protected static Player activePlayer;
+    protected static int generation;
 
-    private static boolean toKill;
-    private static boolean toCreate;
+    protected static boolean toKill;
+    protected static boolean toCreate;
     static ArrayList<String> players;
     static ArrayList<Color> colors;
     static Player player1;
