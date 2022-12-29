@@ -6,20 +6,20 @@ import org.junit.jupiter.api.Test;
 
 public class GameplayTest {
     @Test
-    public void testGetActivePlayer() {
+    public void getActivePlayerTest() {
         Gameplay.activePlayer = Gameplay.player1;
         assertEquals(Gameplay.player1, Gameplay.getActivePlayer());
     }
 
     @Test
-    public void testGetGeneration() {
+    public void getGenerationTest() {
 
         Gameplay.generation = 10;
         assertEquals(10, Gameplay.getGeneration());
     }
 
     @Test
-    public void testGetToKill() {
+    public void getToKillTest() {
         Gameplay.toKill = true;
         assertTrue(Gameplay.getToKill());
 
@@ -28,20 +28,20 @@ public class GameplayTest {
     }
 
     @Test
-    public void testSetToKill() {
+    public void setToKillTest() {
         assertFalse(Gameplay.toKill);
         Gameplay.setToKill(true);
         assertTrue(Gameplay.toKill);
     }
 
     @Test
-    public void testGetToCreate() {
+    public void getToCreateTest() {
         Gameplay.toCreate = true;
         assertTrue(Gameplay.getToCreate());
     }
 
     @Test
-    public void testSetToCreate() {
+    public void setToCreateTest() {
         Gameplay.setToCreate(true);
         assertTrue(Gameplay.toCreate);
     }
