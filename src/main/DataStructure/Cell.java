@@ -86,13 +86,14 @@ public class Cell extends JLabel implements MouseListener {
     @Override
     public void mousePressed(MouseEvent e) {
 
-        // cell was not alive at start of round => can be selected
         if (enabled){
-            if (!isAlive && roundKilled != Gameplay.getGeneration()){
+            // cell was not alive at start of round => can be selected
+            if (Gameplay.getToCreate() && !isAlive && roundKilled != Gameplay.getGeneration()){
                 setBackground(Gameplay.getActivePlayer().getPlayerColor());
                 isAlive = true;
                 playerOfCell = Gameplay.getActivePlayer();
                 roundChanged = Gameplay.getGeneration();
+                Gameplay.setToCreate(false);
             }
 
             // cell has been born in this round -> can be killed again
@@ -100,13 +101,16 @@ public class Cell extends JLabel implements MouseListener {
                 setBackground(Color.lightGray);
                 isAlive = false;
                 playerOfCell = null;
-                roundChanged = Gameplay.getGeneration() - 1;}
+                roundChanged = Gameplay.getGeneration() - 1;
+                Gameplay.setToCreate(true);
+            }
 
             // cell belonged to other player at start of round -> can be killed
-            else if (isAlive && playerOfCell != Gameplay.getActivePlayer()) {
+            else if (Gameplay.getToKill() && isAlive && playerOfCell != Gameplay.getActivePlayer()) {
                 isAlive = false;
                 playerOfCell = null;
                 roundKilled = Gameplay.getGeneration() - 1;
+                Gameplay.setToKill(false);
             }
 
             // cell belonged to other player at start of round and has been killed-> can be revived
@@ -115,6 +119,7 @@ public class Cell extends JLabel implements MouseListener {
                 isAlive = true;
                 playerOfCell = Gameplay.getActivePlayer();
                 roundChanged = Gameplay.getGeneration();
+                Gameplay.setToKill(true);
             }
         }
     }
