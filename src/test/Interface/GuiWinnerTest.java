@@ -57,8 +57,8 @@ public class GuiWinnerTest {
         guiWinner.actionPerformed(er);
         assertFalse(guiWinner.isVisible());
 
-       guiWinner.actionPerformed(eng);
-       assertFalse(guiWinner.isVisible());
+        guiWinner.actionPerformed(eng);
+        assertFalse(guiWinner.isVisible());
     }
 
     }
