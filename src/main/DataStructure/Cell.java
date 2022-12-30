@@ -1,6 +1,7 @@
 package DataStructure;
 
 import Exceptions.*;
+import Interface.PanelInfos;
 import Logic.Gameplay;
 
 import javax.swing.*;
@@ -137,6 +138,7 @@ public class Cell extends JLabel implements MouseListener {
                 roundChanged = Gameplay.getGeneration();
                 Gameplay.setToKill(true);
             }
+            PanelInfos.updateInfoPanel();
         }
     }
 

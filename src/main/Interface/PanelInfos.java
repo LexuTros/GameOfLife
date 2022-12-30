@@ -14,7 +14,7 @@ import java.awt.event.ActionListener;
 
 public class PanelInfos extends JPanel implements ActionListener {
 
-    private final JButton buttonDone;
+    private static JButton buttonDone;
 
 
 
@@ -26,7 +26,11 @@ public class PanelInfos extends JPanel implements ActionListener {
     private static LabelActiveCells playerOneActiveCells;
     private static LabelActiveCells playerTwoActiveCells;
     private static JLabel labelActivePlayer;
-private static LabelPlayerColor labelActivePlayerColor;
+
+    private static JLabel labelToCreate;
+    private static JLabel labelToKill;
+
+    private static LabelPlayerColor labelActivePlayerColor;
 
     PanelInfos(Player player1, Player player2, Player activePlayerStart)
     {
@@ -45,7 +49,7 @@ private static LabelPlayerColor labelActivePlayerColor;
         // Box Player one
 
         PanelPlayerBox boxPlayerOne = new PanelPlayerBox();
-        boxPlayerOne.setBounds(10,250,160,80);
+        boxPlayerOne.setBounds(10,350,160,80);
 
         LabelPlayerName namePlayerOne = new LabelPlayerName();
         namePlayerOne.setText(playerOne.getPlayerName());
@@ -65,7 +69,7 @@ private static LabelPlayerColor labelActivePlayerColor;
         // Box Player two
 
         PanelPlayerBox boxPlayerTwo = new PanelPlayerBox();
-        boxPlayerTwo.setBounds(10,350,160,80);
+        boxPlayerTwo.setBounds(10,450,160,80);
 
         LabelPlayerName namePlayerTwo = new LabelPlayerName();
         namePlayerTwo.setText(playerTwo.getPlayerName());
@@ -76,7 +80,6 @@ private static LabelPlayerColor labelActivePlayerColor;
         LabelTextActiveCells textActiveCellsTwo = new LabelTextActiveCells();
 
         playerTwoActiveCells = new LabelActiveCells();
-        //playerTwoActiveCells.setText(String.valueOf(playerTwo.getAliveCells()));
 
         boxPlayerTwo.add(colorPlayerTwo);
         boxPlayerTwo.add(namePlayerTwo);
@@ -99,15 +102,25 @@ private static LabelPlayerColor labelActivePlayerColor;
         labelActivePlayerColor= new LabelPlayerColor();
         labelActivePlayerColor.setBounds(135, 145, 20, 20);
 
+        // to create / to kill
+
+        labelToCreate = new JLabel();
+        labelToCreate.setBounds(10, 180, 200, 20);
+        labelToCreate.setFont(new Font("Comic Sans", Font.ITALIC, 14));
+
+        labelToKill = new JLabel();
+        labelToKill.setFont(new Font("Comic Sans", Font.ITALIC, 14));
+        labelToKill.setBounds(10, 200, 200, 20);
 
         // Button to continue game
 
         buttonDone = new JButton();
         buttonDone.addActionListener(this);
         buttonDone.setText("DONE!");
-        buttonDone.setBounds(10,550,160 ,30 );
+        buttonDone.setBounds(10,240,160 ,30 );
         buttonDone.setFont(new Font("Comic Sans", Font.BOLD, 20));
         buttonDone.setFocusable(false);
+        buttonDone.setEnabled(false);
 
         // add all components to frame
 
@@ -118,6 +131,8 @@ private static LabelPlayerColor labelActivePlayerColor;
         this.add(boxPlayerOne);
         this.add(boxPlayerTwo);
         this.add(buttonDone);
+        this.add(labelToCreate);
+        this.add(labelToKill);
 
         updateInfoPanel();
         // settings of frame
@@ -131,11 +146,16 @@ private static LabelPlayerColor labelActivePlayerColor;
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == buttonDone){
-            if (!Gameplay.getToKill() && !Gameplay.getToCreate()) {
-                buttonDone.setEnabled(false);
-                Gameplay.roundDone();
-                buttonDone.setEnabled(true);
-            }
+            Gameplay.roundDone();
+            if (Gameplay.getToCreate()){
+                labelToCreate.setText("left to create: 1");}
+            else {
+                labelToCreate.setText("left to create: 0");}
+            if (Gameplay.getToKill()){
+                labelToKill.setText("left to kill: 1");}
+            else {
+                labelToKill.setText("left to kill: 0");}
+
         }
     }
 
@@ -145,7 +165,20 @@ private static LabelPlayerColor labelActivePlayerColor;
         generation.setText("Generation: " + Gameplay.getGeneration());
         labelActivePlayer.setText(Gameplay.getActivePlayer().getPlayerName());
         labelActivePlayerColor.setBackground(Gameplay.getActivePlayer().getPlayerColor());
-        }
+        if (Gameplay.getToCreate()){
+            labelToCreate.setText("left to create: 1");}
+        else {
+            labelToCreate.setText("left to create: 0");}
+        if (Gameplay.getToKill()){
+            labelToKill.setText("left to kill: 1");}
+        else {
+            labelToKill.setText("left to kill: 0");}
+
+        if (!Gameplay.getToCreate() && !Gameplay.getToKill()){
+            buttonDone.setEnabled(true);}
+        else {
+            buttonDone.setEnabled(false);}
+    }
 
 
 
