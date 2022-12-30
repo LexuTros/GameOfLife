@@ -12,7 +12,7 @@ import java.awt.event.ActionListener;
 
 public class GuiGame extends GuiTemplate implements ActionListener {
     private final JMenuItem itemRestart;
-    private final JMenuItem itemNewGame;
+    public final JMenuItem itemNewGame;
     private final JMenuItem itemExit;
 
     public GuiGame(Board board, Player playerOne, Player playerTwo, Player activePlayer) {
