@@ -6,6 +6,7 @@ import DataStructure.Player;
 import org.junit.jupiter.api.Test;
 
 import java.awt.*;
+import static org.mockito.Mockito.*;
 
 public class GameplayTest {
     @Test
@@ -65,6 +66,14 @@ public class GameplayTest {
 
         Gameplay.getStartingPlayer();
         assertNotEquals(p2, Gameplay.activePlayer);
+
+    }
+
+    @Test
+    public void mainTest() {
+        Gameplay g = mock(Gameplay.class);
+        Gameplay.main(new String[] {});
+        verify(g).welcomeDisplay();
 
     }
 
