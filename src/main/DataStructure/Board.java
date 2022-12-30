@@ -9,18 +9,14 @@ public class Board extends JPanel {
 
     public int width;
     public int height;
-    private Cell[][] board;
+    private final Cell[][] board;
 
     public Board(int width, int height) {
-//            throws InvalidHeight, InvalidWidth {
 //        if (height < 1) {
 //            throw new InvalidHeight();
 //        } else if (width < 1) {
 //            throw new InvalidWidth();
 //        } else {
-//            this.width = width;
-//            this.height = height;
-//            board = new Cell[height][width];
         this.width = width;
         this.height = height;
         board = new Cell[width][height];
@@ -37,9 +33,6 @@ public class Board extends JPanel {
 
     }
 
-
-
-
     public Cell getField(int xCoordinate, int yCoordinate) throws InvalidCoordinate {
         xCoordinate--;
         yCoordinate--;
@@ -51,5 +44,21 @@ public class Board extends JPanel {
             throw new InvalidCoordinate();
         }
         return board[xCoordinate][yCoordinate];
+    }
+
+
+    public void setBoardChangeEnabled(boolean enabled) {
+        for (int x = 1; x <= this.width; x++) {
+            for (int y = 1; y <= this.height; y++) {
+                Cell cell = null;
+                try {
+                    cell = this.getField(x, y);
+                } catch (InvalidCoordinate e) {
+                    System.out.println("Error");
+                }
+                assert cell != null;
+                cell.setEnabledChange(enabled);
+            }
+        }
     }
 }

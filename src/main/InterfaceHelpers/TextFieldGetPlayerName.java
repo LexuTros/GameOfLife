@@ -3,9 +3,9 @@ package InterfaceHelpers;
 import javax.swing.*;
 import java.awt.*;
 
-public class TextFieldlGetPlayerName extends JTextField {
+public class TextFieldGetPlayerName extends JTextField {
 
-    public TextFieldlGetPlayerName(){
+    public TextFieldGetPlayerName(){
         this.setFont(new Font("Consolas", Font.PLAIN, 35));
         this.setForeground(Color.green);
         this.setBackground(Color.black);
