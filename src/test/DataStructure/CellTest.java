@@ -218,11 +218,4 @@ class CellTest {
         }
     }
 
-    @Test
-    public void MousePressedTest() {
-        Cell testCell = new Cell();
-        testCell.setEnabledChange(true);
-        Gameplay testGameplay = new Gameplay();
-    }
-
 }
