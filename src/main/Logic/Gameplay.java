@@ -1,7 +1,6 @@
 package Logic;
 
 import DataStructure.Board;
-import DataStructure.Cell;
 import DataStructure.Player;
 import Exceptions.InvalidCoordinate;
 import Exceptions.NegativeAmountOfNeighbors;
@@ -78,8 +77,8 @@ public class Gameplay {
     }
 
     public static void restartGame(){
-        player1.setAliveCells(5);
-        player2.setAliveCells(5);
+        player1.setAliveCells(0);
+        player2.setAliveCells(0);
         startGame();
     }
 
@@ -133,32 +132,8 @@ public class Gameplay {
         toCreate = true;
     }
 
-    private static void updateAlivePlayerCells() throws NoPlayerAssigned, InvalidCoordinate {
-        int player1Counter = 0;
-        int player2Counter = 0;
-        for (int x = 1; x <= board.width; x++) {
-            for (int y = 1; y <= board.height; y++) {
-                Cell cell = board.getField(x,y);
-                if (cell.getIsAlive()) {
-                    if (cell.getPlayer() == player1) {
-                        player1Counter++;
-                    } else {
-                        player2Counter++;
-                    }
-                }
-            }
-        }
-        player1.setAliveCells(player1Counter);
-        player2.setAliveCells(player2Counter);
-    }
-
 
     private static void checkWinner(){
-        try {
-            updateAlivePlayerCells();
-        } catch (NoPlayerAssigned | InvalidCoordinate e) {
-            throw new RuntimeException(e);
-        }
 
         if (player1.getAliveCells() == 0 && player2.getAliveCells() == 0) {
             winnerDisplay("You are both equally bad");

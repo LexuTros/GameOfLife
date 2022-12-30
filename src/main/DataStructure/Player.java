@@ -12,8 +12,7 @@ public class Player extends JLabel implements Comparable<Player> {
     public Player(String name, Color color) {
         this.name = name;
         this.color = color;
-        this.aliveCells = 5;
-
+        this.aliveCells = 0;
     }
 
     public void setAliveCells(int numberOfCells) {

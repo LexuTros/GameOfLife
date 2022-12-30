@@ -36,11 +36,13 @@ public class Cell extends JLabel implements MouseListener {
     public void reviveCell(Player newOwner) {
         isAlive = true;
         playerOfCell = newOwner;
+        playerOfCell.setAliveCells(playerOfCell.getAliveCells() + 1);
         setBackground(newOwner.getPlayerColor());
     }
 
     public void killCell() {
         isAlive = false;
+        playerOfCell.setAliveCells(playerOfCell.getAliveCells() - 1);
         playerOfCell = null;
         roundKilled = Gameplay.getGeneration();
         setBackground(Color.lightGray);
