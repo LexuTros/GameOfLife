@@ -13,7 +13,6 @@ public class PlayerTest {
         assertEquals("Philipp", p.getPlayerName());
         assertTrue(p.getPlayerName().length() > 0);
         assertTrue(p.getPlayerName().length() <= 18);
-
     }
 
     @Test

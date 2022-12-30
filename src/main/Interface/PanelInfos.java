@@ -131,11 +131,12 @@ private static LabelPlayerColor labelActivePlayerColor;
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == buttonDone){
-            buttonDone.setEnabled(false);
-            Gameplay.roundDone();
-            buttonDone.setEnabled(true);
+            if (!Gameplay.getToKill() && !Gameplay.getToCreate()) {
+                buttonDone.setEnabled(false);
+                Gameplay.roundDone();
+                buttonDone.setEnabled(true);
+            }
         }
-
     }
 
     public static void updateInfoPanel(){
