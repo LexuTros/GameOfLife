@@ -25,7 +25,7 @@ public class PlayerTest {
     @Test
     public void getPlayerAliveCellsTest() {
         Player p = new Player("Mark", Color.RED);
-        assertEquals(0, p.getAliveCells());
+        assertEquals(5, p.getAliveCells());
     }
 
     @Test
