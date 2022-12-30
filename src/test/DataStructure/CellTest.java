@@ -1,9 +1,13 @@
 package DataStructure;
 
 import Exceptions.*;
+import Interface.GuiGame;
 import org.junit.jupiter.api.Test;
 
+import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.MouseEvent;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -132,5 +136,73 @@ class CellTest {
         testCell.setEnabledChange(true);
         assertTrue(testCell.isEnabled());
     }
+
+    @Test
+    public void actionPerformedItemRestartTest() {
+        Board board = new Board(50,50);
+        Player p1 = new Player("Chris", Color.GREEN);
+        Player p2 = new Player("Valentin", Color.RED);
+        GuiGame gui = new GuiGame(board, p1, p2, p1);
+        assertTrue(gui.isVisible());
+    }
+
+    @Test
+    public void actionPerformedItemNewGameTest() {
+        Board board = new Board(50,50);
+        Player p1 = new Player("Philipp", Color.PINK);
+        Player p2 = new Player("Karl", Color.GREEN);
+        GuiGame gui = new GuiGame(board, p1, p2, p1);
+        JMenuItem itemNewGame = gui.itemNewGame;
+
+        ActionEvent event = new ActionEvent(itemNewGame, ActionEvent.ACTION_PERFORMED, null);
+        gui.actionPerformed(event);
+        assertFalse(gui.isVisible());
+    }
+
+    @Test
+    public void mousePressedTest() {
+        Cell testCell = new Cell();
+        testCell.reviveCell(new Player("Karl", Color.RED));
+        MouseEvent event = new MouseEvent(testCell, MouseEvent.MOUSE_PRESSED, System.currentTimeMillis(), 0, 0, 0, 1, false);
+        testCell.mousePressed(event);
+        assertTrue(testCell.getIsAlive());
+
+    }
+
+
+    @Test
+    public void mouseClickedTest() {
+        Cell testCell = new Cell();
+        MouseEvent event = new MouseEvent(testCell, MouseEvent.MOUSE_CLICKED, 0, 0, 0, 0, 0, false);
+        testCell.mouseClicked(event);
+        assertTrue(true);
+    }
+    @Test
+    public void mouseReleasedTest() {
+        Cell testCell = new Cell();
+        MouseEvent event = new MouseEvent(testCell, MouseEvent.MOUSE_RELEASED,
+                System.currentTimeMillis(), 0, 0, 0, 0, false);
+        testCell.mouseReleased(event);
+        assertTrue(true);
+    }
+
+    @Test
+    public void mouseExitedTest() {
+        Cell testCell = new Cell();
+        MouseEvent event = new MouseEvent(testCell, MouseEvent.MOUSE_EXITED,
+                System.currentTimeMillis(), 0, 0, 0, 0, false);
+        testCell.mouseExited(event);
+        assertTrue(true);
+    }
+
+    @Test
+    public void mouseEnteredTest() {
+        Cell testCell = new Cell();
+        MouseEvent event = new MouseEvent(testCell, MouseEvent.MOUSE_ENTERED,
+                System.currentTimeMillis(), 0, 0, 0, 0, false);
+        testCell.mouseEntered(event);
+        assertTrue(true);
+    }
+
 
 }
