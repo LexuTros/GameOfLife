@@ -140,15 +140,7 @@ public class PanelInfos extends JPanel implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == buttonDone){
             Gameplay.roundDone();
-            if (Gameplay.getToCreate()){
-                labelToCreate.setText("left to create: 1");}
-            else {
-                labelToCreate.setText("left to create: 0");}
-            if (Gameplay.getToKill()){
-                labelToKill.setText("left to kill: 1");}
-            else {
-                labelToKill.setText("left to kill: 0");}
-
+            updateToCreateToKill();
         }
     }
 
@@ -159,21 +151,13 @@ public class PanelInfos extends JPanel implements ActionListener {
         generation.setText("Generation: " + Gameplay.getGeneration());
         labelActivePlayer.setText(Gameplay.getActivePlayer().getPlayerName());
         labelActivePlayerColor.setBackground(Gameplay.getActivePlayer().getPlayerColor());
-        if (Gameplay.getToCreate()){
-            labelToCreate.setText("left to create: 1");}
-        else {
-            labelToCreate.setText("left to create: 0");}
-        if (Gameplay.getToKill()){
-            labelToKill.setText("left to kill: 1");}
-        else {
-            labelToKill.setText("left to kill: 0");}
-
-        if (!Gameplay.getToCreate() && !Gameplay.getToKill()){
-            buttonDone.setEnabled(true);}
-        else {
-            buttonDone.setEnabled(false);}
+        updateToCreateToKill();
+        buttonDone.setEnabled(!Gameplay.getToCreate() && !Gameplay.getToKill());
     }
 
+    private static void updateToCreateToKill(){
+        labelToCreate.setText("left to create: " + (Gameplay.getToCreate() ? 1 : 0));
+        labelToKill.setText("left to kill: " + (Gameplay.getToKill() ? 1 : 0));};
 
 
     public JButton getButtonDone() {
