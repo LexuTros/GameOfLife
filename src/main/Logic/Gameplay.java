@@ -7,11 +7,7 @@ import Exceptions.InvalidCoordinate;
 import Exceptions.NegativeAmountOfNeighbors;
 import Exceptions.NoPlayerAssigned;
 import Exceptions.TooManyAliveNeighbors;
-import Interface.GuiGame;
-import Interface.GuiGetPlayers;
-import Interface.GuiWelcome;
-import Interface.GuiWinner;
-import com.sun.net.httpserver.HttpExchange;
+import Interface.*;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -73,9 +69,8 @@ public class Gameplay {
         startGame();
     }
 
-    // TO-DO: get first player alphabetically
     private static void getStartingPlayer(){
-        if (player1.compareTo(player2) == 1) {
+        if (player1.compareTo(player2) < 0) {
             activePlayer = player1;
         } else {
             activePlayer = player2;
@@ -83,6 +78,8 @@ public class Gameplay {
     }
 
     public static void restartGame(){
+        player1.setAliveCells(5);
+        player2.setAliveCells(5);
         startGame();
     }
 
@@ -108,8 +105,8 @@ public class Gameplay {
         } catch (InvalidCoordinate e) {
             throw new RuntimeException(e);
         }
-
         GuiGame game = new GuiGame(board, player1, player2, activePlayer);
+        PanelInfos.updateInfoPanel();
     }
 
     public static void roundDone(){
@@ -122,6 +119,7 @@ public class Gameplay {
         generation++;
         checkWinner();
         nextPlayer();
+        PanelInfos.updateInfoPanel();
         board.setBoardChangeEnabled(true);
     }
 
@@ -176,8 +174,6 @@ public class Gameplay {
                 winnerDisplay(player1.getPlayerName()+ ", you win!!");
         }
     }
-
-    private static void updateGui(){}
 
     private static void winnerDisplay(String winner){
         GuiWinner win = new GuiWinner(winner);
