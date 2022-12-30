@@ -2,6 +2,7 @@ package DataStructure;
 
 import Exceptions.*;
 import Interface.GuiGame;
+import Logic.Gameplay;
 import org.junit.jupiter.api.Test;
 
 import javax.swing.*;
@@ -204,5 +205,24 @@ class CellTest {
         assertTrue(true);
     }
 
+
+    @Test
+    public void getFuturePlayerTest() {
+        Cell testCell = new Cell();
+        try {
+            testCell.getFuturePlayer();
+        } catch (NoPlayerAssigned e) {
+            // All good here, expected exception
+        } catch (Exception e) {
+            fail("Different exception wrongly thrown.");
+        }
+    }
+
+    @Test
+    public void MousePressedTest() {
+        Cell testCell = new Cell();
+        testCell.setEnabledChange(true);
+        Gameplay testGameplay = new Gameplay();
+    }
 
 }
