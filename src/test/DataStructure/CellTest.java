@@ -161,15 +161,6 @@ class CellTest {
     }
 
     @Test
-    public void mousePressedTest() {
-        Cell testCell = new Cell();
-        testCell.reviveCell(new Player("Karl", Color.RED));
-        MouseEvent event = new MouseEvent(testCell, MouseEvent.MOUSE_PRESSED, System.currentTimeMillis(), 0, 0, 0, 1, false);
-        testCell.mousePressed(event);
-        assertFalse(testCell.getIsAlive());
-    }
-
-    @Test
     public void mousePressedNotEnabledTest() {
         Cell testCell = new Cell();
         testCell.setEnabledChange(false);
@@ -227,6 +218,7 @@ class CellTest {
     public void mousePressedFourthConditionTrueTest() {
         Cell testCell = new Cell();
         Player sazed = new Player("Sazed", Color.RED);
+        testCell.setPlayer(sazed);
         Gameplay.setActivePlayer(sazed);
         Gameplay.setGeneration(1);
         testCell.killCell();
