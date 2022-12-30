@@ -12,11 +12,6 @@ public class Board extends JPanel {
     private final Cell[][] board;
 
     public Board(int width, int height) {
-//        if (height < 1) {
-//            throw new InvalidHeight();
-//        } else if (width < 1) {
-//            throw new InvalidWidth();
-//        } else {
         this.width = width;
         this.height = height;
         board = new Cell[width][height];
