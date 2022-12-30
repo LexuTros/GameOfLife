@@ -50,11 +50,11 @@ public class Gameplay {
     }
 
     static void welcomeDisplay(){
-        GuiWelcome welcome = new GuiWelcome();
+        new GuiWelcome();
     }
 
     public static void askPlayerNames(){
-        GuiGetPlayers guiPlayerNames = new GuiGetPlayers();
+        new GuiGetPlayers();
     }
 
     public static void initializePlayers(){
@@ -104,7 +104,7 @@ public class Gameplay {
         } catch (InvalidCoordinate e) {
             throw new RuntimeException(e);
         }
-        GuiGame game = new GuiGame(board, player1, player2, activePlayer);
+        new GuiGame(board, player1, player2, activePlayer);
         PanelInfos.updateInfoPanel();
     }
 
@@ -117,9 +117,7 @@ public class Gameplay {
         }
         generation++;
         checkWinner();
-        nextPlayer();
-        PanelInfos.updateInfoPanel();
-        board.setBoardChangeEnabled(true);
+
     }
 
     private static void nextPlayer() {
@@ -144,10 +142,12 @@ public class Gameplay {
         else if (player2.getAliveCells() == 0){
             winnerDisplay(player1.getPlayerName()+ ", you win!!");
         }
+        else {nextPlayer();
+        PanelInfos.updateInfoPanel();
+        board.setBoardChangeEnabled(true);}
     }
 
-    private static void winnerDisplay(String winner){
-        GuiWinner win = new GuiWinner(winner);
+    private static void winnerDisplay(String winner){new GuiWinner(winner);
     }
 
     public static void main(String[] args) {

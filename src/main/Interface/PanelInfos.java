@@ -153,6 +153,7 @@ public class PanelInfos extends JPanel implements ActionListener {
     }
 
     public static void updateInfoPanel(){
+
         playerOneActiveCells.setText(String.valueOf(playerOne.getAliveCells()));
         playerTwoActiveCells.setText(String.valueOf(playerTwo.getAliveCells()));
         generation.setText("Generation: " + Gameplay.getGeneration());
