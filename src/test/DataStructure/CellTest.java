@@ -2,7 +2,6 @@ package DataStructure;
 
 import Exceptions.*;
 import Interface.GuiGame;
-import Logic.Gameplay;
 import org.junit.jupiter.api.Test;
 
 import javax.swing.*;
@@ -216,6 +215,12 @@ class CellTest {
         } catch (Exception e) {
             fail("Different exception wrongly thrown.");
         }
+    }
+
+    @Test
+    public void getFuturePlayerInvalidTest() {
+        Cell testCell = new Cell();
+        assertThrows(NoPlayerAssigned.class, testCell::getFuturePlayer);
     }
 
 }
