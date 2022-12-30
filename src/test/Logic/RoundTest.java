@@ -16,7 +16,7 @@ public class RoundTest {
     Player playerOne = new Player("One", Color.GREEN);
     Player playerTwo = new Player("Two", Color.BLUE);
 
-    public RoundTest() throws InvalidHeight, InvalidWidth {
+    public RoundTest() {
     }
 
     @Test
