@@ -65,7 +65,7 @@ public class GameplayTest {
         Gameplay.player2 = p1;
 
         Gameplay.getStartingPlayer();
-        assertNotEquals(p2, Gameplay.activePlayer);
+        assertEquals(p2, Gameplay.activePlayer);
 
     }
 
