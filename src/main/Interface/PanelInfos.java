@@ -120,4 +120,8 @@ public class PanelInfos extends JPanel implements ActionListener {
         }
 
     }
+
+    public JButton getButtonDone() {
+        return buttonDone;
+    }
 }

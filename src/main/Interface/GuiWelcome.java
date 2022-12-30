@@ -10,12 +10,12 @@ import java.awt.event.ActionListener;
 public class GuiWelcome extends GuiTemplate implements ActionListener {
 
     private final JButton buttonWelcome;
+    private final JLabel labelWelcome = new JLabel();
     public GuiWelcome() {
         this.setLayout(null);
-        JLabel welcome = new JLabel();
-        welcome.setFont(new Font("Papyrus", Font.BOLD, 100));
-        welcome.setText("WELCOME!");
-        welcome.setBounds(200, 250,1000,120);
+        labelWelcome.setFont(new Font("Papyrus", Font.BOLD, 100));
+        labelWelcome.setText("WELCOME!");
+        labelWelcome.setBounds(200, 250,1000,120);
         buttonWelcome = new JButton();
 
         buttonWelcome.setFocusable(false);
@@ -27,7 +27,7 @@ public class GuiWelcome extends GuiTemplate implements ActionListener {
         buttonWelcome.setBounds(350, 450,400,50);
 
 
-        this.add(welcome);
+        this.add(labelWelcome);
         this.add(buttonWelcome);
         this.setVisible(true);
     }
@@ -39,5 +39,13 @@ public class GuiWelcome extends GuiTemplate implements ActionListener {
             Gameplay.askPlayerNames();
 
         }
+    }
+
+    public JLabel getWelcomeLabel() {
+        return labelWelcome;
+    }
+
+    public JButton getWelcomeButton() {
+        return buttonWelcome;
     }
 }

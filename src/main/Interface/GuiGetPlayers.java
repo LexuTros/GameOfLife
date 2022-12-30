@@ -12,7 +12,7 @@ import java.util.ArrayList;
 public class GuiGetPlayers extends GuiTemplate implements ActionListener {
 
 
-    private final JButton continueButton;
+    final JButton continueButton;
     private final JButton buttonChooseColor1;
     private final JButton buttonChooseColor2;
     private final TextFieldGetPlayerName textPlayerOne;
@@ -135,5 +135,9 @@ public class GuiGetPlayers extends GuiTemplate implements ActionListener {
         public static void main (String[]args){
             GuiGetPlayers players = new GuiGetPlayers();
         }
+
+    public JButton getButtonChooseColor1() {
+        return buttonChooseColor1;
     }
+}
 
