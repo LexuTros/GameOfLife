@@ -2,6 +2,7 @@ package DataStructure;
 
 import Exceptions.*;
 import Interface.GuiGame;
+import Logic.Gameplay;
 import org.junit.jupiter.api.Test;
 
 import javax.swing.*;
