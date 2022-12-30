@@ -5,7 +5,7 @@ import Exceptions.InvalidHeight;
 import Exceptions.InvalidWidth;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.fail;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class BoardTest {
 
@@ -98,4 +98,25 @@ public class BoardTest {
             fail("Different exception wrongly thrown.");
         }
     }
-}
+
+        @Test
+        public void setBoardChangeEnabledTest() throws InvalidCoordinate {
+
+            Board board = new Board(3, 3);
+            board.setBoardChangeEnabled(false);
+            for (int x = 1; x <= board.width; x++) {
+                for (int y = 1; y <= board.height; y++) {
+                    Cell cell = board.getField(x, y);
+                    assertFalse(cell.enabled);
+                }
+            }
+            board.setBoardChangeEnabled(true);
+            for (int x = 1; x <= board.width; x++) {
+                for (int y = 1; y <= board.height; y++) {
+                    Cell cell = board.getField(x, y);
+                    assertTrue(cell.enabled);
+                }
+            }
+        }
+    }
+
