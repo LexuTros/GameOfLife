@@ -3,7 +3,7 @@ package DataStructure;
 import javax.swing.*;
 import java.awt.*;
 
-public class Player extends JLabel {
+public class Player extends JLabel implements Comparable<Player> {
     private final String name;
     private final Color color;
     private int aliveCells;
@@ -37,4 +37,8 @@ public class Player extends JLabel {
         return getAliveCells() > 0;
     }
 
+    @Override
+    public int compareTo(Player secondPlayer) {
+        return name.compareTo(secondPlayer.getPlayerName());
+    }
 }

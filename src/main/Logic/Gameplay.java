@@ -70,7 +70,11 @@ public class Gameplay {
 
     // TO-DO: get first player alphabetically
     private static void getStartingPlayer(){
-        activePlayer = player1;
+        if (player1.compareTo(player2) == 1) {
+            activePlayer = player1;
+        } else {
+            activePlayer = player2;
+        }
     }
 
     public static void restartGame(){
