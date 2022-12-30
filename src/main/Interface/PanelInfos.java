@@ -127,7 +127,7 @@ public class PanelInfos extends JPanel implements ActionListener {
         this.add(labelToCreate);
         this.add(labelToKill);
 
-        updateInfoPanel();
+        //updateInfoPanel();
         // settings of frame
 
         this.setPreferredSize(new Dimension(180,750));

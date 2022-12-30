@@ -21,7 +21,7 @@ public class PanelInfosTest {
     public void actionPerformedTest() {
         ActionEvent event = new ActionEvent(this, ActionEvent.ACTION_PERFORMED, null);
         pI.actionPerformed(event);
-        assertTrue(buttonDone.isEnabled());
+        assertFalse(buttonDone.isEnabled());
     }
 
 }

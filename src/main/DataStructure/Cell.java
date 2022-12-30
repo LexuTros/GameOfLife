@@ -14,7 +14,6 @@ public class Cell extends JLabel implements MouseListener {
     private Player playerOfCell;
     private Player futurePlayerOfCell;
     private int roundChanged;
-    private int roundKilled;
     private int aliveNeighbors;
     protected boolean enabled;
 
@@ -26,7 +25,6 @@ public class Cell extends JLabel implements MouseListener {
         addMouseListener(this);
         isAlive = false;
         roundChanged = -1;
-        roundKilled =-1;
         enabled = true;
     }
 
@@ -45,7 +43,6 @@ public class Cell extends JLabel implements MouseListener {
         isAlive = false;
         playerOfCell.setAliveCells(playerOfCell.getAliveCells() - 1);
         playerOfCell = null;
-        roundKilled = Gameplay.getGeneration();
         setBackground(Color.lightGray);
     }
 
@@ -112,7 +109,7 @@ public class Cell extends JLabel implements MouseListener {
 
         if (enabled){
             // cell was not alive at start of round => can be selected
-            if (Gameplay.getToCreate() && !isAlive && roundKilled != Gameplay.getGeneration()){
+            if (Gameplay.getToCreate() && !isAlive){
                 reviveCell(Gameplay.getActivePlayer());
                 roundChanged = Gameplay.getGeneration();
                 Gameplay.setToCreate(false);
@@ -128,16 +125,9 @@ public class Cell extends JLabel implements MouseListener {
             // cell belonged to other player at start of round -> can be killed
             else if (Gameplay.getToKill() && isAlive && playerOfCell != Gameplay.getActivePlayer()) {
                 killCell();
-                roundKilled = Gameplay.getGeneration() - 1;
                 Gameplay.setToKill(false);
             }
 
-            // cell belonged to other player at start of round and has been killed-> can be revived
-            else if (!isAlive && roundKilled == Gameplay.getGeneration()){
-                reviveCell(Gameplay.getActivePlayer());
-                roundChanged = Gameplay.getGeneration();
-                Gameplay.setToKill(true);
-            }
             PanelInfos.updateInfoPanel();
         }
     }
