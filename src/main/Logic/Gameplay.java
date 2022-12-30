@@ -52,7 +52,7 @@ public class Gameplay {
         toCreate = changeToKill;
     }
 
-    private static void welcomeDisplay(){
+    static void welcomeDisplay(){
         GuiWelcome welcome = new GuiWelcome();
     }
 
