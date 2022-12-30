@@ -24,30 +24,30 @@ public class GameplayTest {
 
     @Test
     public void getToKillTest() {
-        Gameplay.toKill = true;
+        Gameplay.setToKill(true);
         assertTrue(Gameplay.getToKill());
 
-        Gameplay.toKill = false;
+        Gameplay.setToKill(false);
         assertFalse(Gameplay.getToKill());
     }
 
     @Test
     public void setToKillTest() {
-        assertFalse(Gameplay.toKill);
+        assertFalse(Gameplay.getToKill());
         Gameplay.setToKill(true);
-        assertTrue(Gameplay.toKill);
+        assertTrue(Gameplay.getToKill());
     }
 
     @Test
     public void getToCreateTest() {
-        Gameplay.toCreate = true;
+        Gameplay.setToCreate(true);
         assertTrue(Gameplay.getToCreate());
     }
 
     @Test
     public void setToCreateTest() {
         Gameplay.setToCreate(true);
-        assertTrue(Gameplay.toCreate);
+        assertTrue(Gameplay.getToCreate());
     }
 
     @Test

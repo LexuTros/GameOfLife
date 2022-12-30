@@ -15,13 +15,12 @@ import java.util.ArrayList;
 public class Gameplay {
     protected static Player activePlayer;
     protected static int generation;
-    protected static boolean toKill;
-    protected static boolean toCreate;
-    static ArrayList<String> players;
-    static ArrayList<Color> colors;
-    static Player player1;
-    static Player player2;
-    public static Board board;
+    private static boolean toKill;
+    private static boolean toCreate;
+    protected static Player player1;
+    protected static Player player2;
+    private static Board board;
+
 
     public static Player getActivePlayer(){
         return activePlayer;
@@ -33,6 +32,9 @@ public class Gameplay {
 
     public static int getGeneration(){
         return generation;
+    }
+    public static void setGeneration(int newGeneration) {
+        generation = newGeneration;
     }
 
     public static boolean getToKill(){
@@ -49,7 +51,8 @@ public class Gameplay {
         toCreate = changeToKill;
     }
 
-    static void welcomeDisplay(){
+
+    protected static void welcomeDisplay(){
         new GuiWelcome();
     }
 
@@ -57,9 +60,14 @@ public class Gameplay {
         new GuiGetPlayers();
     }
 
+    private static void winnerDisplay(String winner){
+        new GuiWinner(winner);
+    }
+
+
     public static void initializePlayers(){
-        players = GuiGetPlayers.players;
-        colors = GuiGetPlayers.colors;
+        ArrayList<String> players = GuiGetPlayers.players;
+        ArrayList<Color> colors = GuiGetPlayers.colors;
 
         player1 = new Player(players.get(0), colors.get(0));
         player2 = new Player(players.get(1), colors.get(1));
@@ -67,20 +75,6 @@ public class Gameplay {
         startGame();
     }
 
-
-    static void getStartingPlayer(){
-        if (player1.compareTo(player2) < 0) {
-            activePlayer = player1;
-        } else {
-            activePlayer = player2;
-        }
-    }
-
-    public static void restartGame(){
-        player1.setAliveCells(0);
-        player2.setAliveCells(0);
-        startGame();
-    }
 
     private static void startGame(){
         generation = 1;
@@ -120,16 +114,11 @@ public class Gameplay {
 
     }
 
-    private static void nextPlayer() {
-        if (activePlayer == player1) {
-            activePlayer = player2;
-        } else {
-            activePlayer = player1;
-        }
-        toKill = true;
-        toCreate = true;
+    public static void restartGame(){
+        player1.setAliveCells(0);
+        player2.setAliveCells(0);
+        startGame();
     }
-
 
     private static void checkWinner(){
 
@@ -147,15 +136,28 @@ public class Gameplay {
         board.setBoardChangeEnabled(true);}
     }
 
-    private static void winnerDisplay(String winner){new GuiWinner(winner);
+
+
+    public static void getStartingPlayer(){
+        if (player1.compareTo(player2) < 0) {
+            activePlayer = player1;
+        } else {
+            activePlayer = player2;
+        }
     }
+
+    private static void nextPlayer() {
+        if (activePlayer == player1) {
+            activePlayer = player2;
+        } else {
+            activePlayer = player1;
+        }
+        toKill = true;
+        toCreate = true;
+    }
+
 
     public static void main(String[] args) {
         welcomeDisplay();
-    }
-
-
-    public static void setGeneration(int newGeneration) {
-        generation = newGeneration;
     }
 }
