@@ -20,7 +20,6 @@ public class PanelInfos extends JPanel implements ActionListener {
 
     private static Player playerOne;
     private static Player playerTwo;
-    private Player activePlayer;
 
     private static JLabel generation;
     private static LabelActiveCells playerOneActiveCells;
@@ -32,12 +31,11 @@ public class PanelInfos extends JPanel implements ActionListener {
 
     private static LabelPlayerColor labelActivePlayerColor;
 
-    PanelInfos(Player player1, Player player2, Player activePlayerStart)
+    PanelInfos(Player player1, Player player2)
     {
         this.setLayout(null);
         playerOne = player1;
         playerTwo = player2;
-        activePlayer = activePlayerStart;
 
         // Generation
 
@@ -155,9 +153,10 @@ public class PanelInfos extends JPanel implements ActionListener {
         buttonDone.setEnabled(!Gameplay.getToCreate() && !Gameplay.getToKill());
     }
 
-    private static void updateToCreateToKill(){
+    private static void updateToCreateToKill() {
         labelToCreate.setText("left to create: " + (Gameplay.getToCreate() ? 1 : 0));
-        labelToKill.setText("left to kill: " + (Gameplay.getToKill() ? 1 : 0));};
+        labelToKill.setText("left to kill: " + (Gameplay.getToKill() ? 1 : 0));
+    }
 
 
     public JButton getButtonDone() {

@@ -15,9 +15,9 @@ public class GuiGame extends GuiTemplate implements ActionListener {
     public final JMenuItem itemNewGame;
     private final JMenuItem itemExit;
 
-    public GuiGame(Board board, Player playerOne, Player playerTwo, Player activePlayer) {
+    public GuiGame(Board board, Player playerOne, Player playerTwo) {
         this.add(board,BorderLayout.CENTER);
-        this.add(new PanelInfos(playerOne, playerTwo, activePlayer),BorderLayout.EAST);
+        this.add(new PanelInfos(playerOne, playerTwo),BorderLayout.EAST);
 
         JMenuBar menuBar = new JMenuBar();
         this.setJMenuBar(menuBar);

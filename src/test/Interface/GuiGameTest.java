@@ -14,12 +14,11 @@ public class GuiGameTest {
     Board board = new Board(50, 50);
     Player p1 = new Player("Philipp", Color.GREEN);
     Player p2 = new Player("Johnny", Color.PINK);
-    Player activePlayer = p1;
 
     @Test
     public void constructorTest() {
         Gameplay.setActivePlayer(p1);
-        GuiGame guiGame = new GuiGame(board, p1, p2, activePlayer);
+        GuiGame guiGame = new GuiGame(board, p1, p2);
 
         assertNotNull(guiGame);
     }

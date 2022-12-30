@@ -30,9 +30,7 @@ public class Round {
                             aliveNeighborOwners.add(neighborCell.getPlayer());
                         }
                     }
-                    catch (InvalidCoordinate e){
-                        continue;
-                    }
+                    catch (InvalidCoordinate ignored){}
                 }
             }
         }

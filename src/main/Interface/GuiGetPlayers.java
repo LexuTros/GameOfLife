@@ -132,7 +132,7 @@ public class GuiGetPlayers extends GuiTemplate implements ActionListener {
     }
 
         public static void main (String[]args){
-            GuiGetPlayers players = new GuiGetPlayers();
+            new GuiGetPlayers();
         }
 
 }

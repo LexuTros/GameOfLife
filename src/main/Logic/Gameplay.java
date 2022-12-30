@@ -104,7 +104,7 @@ public class Gameplay {
         } catch (InvalidCoordinate e) {
             throw new RuntimeException(e);
         }
-        new GuiGame(board, player1, player2, activePlayer);
+        new GuiGame(board, player1, player2);
         PanelInfos.updateInfoPanel();
     }
 

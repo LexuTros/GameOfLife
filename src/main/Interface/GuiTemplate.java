@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 
 public class GuiTemplate extends JFrame {
-            ;
+
     GuiTemplate(){
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // without this, frame only gets hidden (NO_ACTION, not possible to close)
         this.setSize(1200, 750);
@@ -20,7 +20,7 @@ public class GuiTemplate extends JFrame {
     }
 
     public static void main(String[] args) {
-        GuiTemplate players = new GuiTemplate();
+        new GuiTemplate();
 
     }
 

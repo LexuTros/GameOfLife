@@ -143,7 +143,7 @@ class CellTest {
         Board board = new Board(50,50);
         Player p1 = new Player("Chris", Color.GREEN);
         Player p2 = new Player("Valentin", Color.RED);
-        GuiGame gui = new GuiGame(board, p1, p2, p1);
+        GuiGame gui = new GuiGame(board, p1, p2);
         assertTrue(gui.isVisible());
     }
 
@@ -152,7 +152,7 @@ class CellTest {
         Board board = new Board(50,50);
         Player p1 = new Player("Philipp", Color.PINK);
         Player p2 = new Player("Karl", Color.GREEN);
-        GuiGame gui = new GuiGame(board, p1, p2, p1);
+        GuiGame gui = new GuiGame(board, p1, p2);
         JMenuItem itemNewGame = gui.itemNewGame;
 
         ActionEvent event = new ActionEvent(itemNewGame, ActionEvent.ACTION_PERFORMED, null);

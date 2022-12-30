@@ -14,7 +14,7 @@ public class PanelInfosTest {
     private final Player p1 = new Player("Philipp", Color.GREEN);
     private final Player p2 = new Player("Johnny", Color.PINK);
 
-    private final PanelInfos pI = new PanelInfos(p1,p2,p1);
+    private final PanelInfos pI = new PanelInfos(p1,p2);
     private final JButton buttonDone = pI.getButtonDone();
 
     @Test
