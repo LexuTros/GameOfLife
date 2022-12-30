@@ -88,12 +88,6 @@ public class PanelInfos extends JPanel implements ActionListener {
 
         // Active Player
 
-        JLabel textActivePlayer = new JLabel();
-        textActivePlayer.setFont(new Font("Comic Sans", Font.ITALIC, 20));
-        textActivePlayer.setForeground(Color.black);
-        textActivePlayer.setBounds(10, 100, 160, 30);
-        textActivePlayer.setText("active Player:");
-
         labelActivePlayer = new JLabel();
         labelActivePlayer.setFont(new Font("MV Boli", Font.BOLD, 25));
         labelActivePlayer.setForeground(Color.black);
@@ -125,7 +119,6 @@ public class PanelInfos extends JPanel implements ActionListener {
         // add all components to frame
 
         this.add(generation);
-        this.add(textActivePlayer);
         this.add(labelActivePlayer);
         this.add(labelActivePlayerColor);
         this.add(boxPlayerOne);
