@@ -2,7 +2,10 @@ package Logic;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import DataStructure.Player;
 import org.junit.jupiter.api.Test;
+
+import java.awt.*;
 
 public class GameplayTest {
     @Test
@@ -44,6 +47,25 @@ public class GameplayTest {
     public void setToCreateTest() {
         Gameplay.setToCreate(true);
         assertTrue(Gameplay.toCreate);
+    }
+
+    @Test
+    public void getStartingPlayerTest() {
+        Player p1 = new Player("Johnny", Color.GREEN);
+        Player p2 = new Player("Chris", Color.PINK);
+
+        Gameplay.player1 = p1;
+        Gameplay.player2 = p2;
+
+        Gameplay.getStartingPlayer();
+        assertEquals(p2, Gameplay.activePlayer);
+
+        Gameplay.player1 = p2;
+        Gameplay.player2 = p1;
+
+        Gameplay.getStartingPlayer();
+        assertNotEquals(p2, Gameplay.activePlayer);
+
     }
 
 }

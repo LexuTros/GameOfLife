@@ -11,7 +11,6 @@ import Interface.GuiGame;
 import Interface.GuiGetPlayers;
 import Interface.GuiWelcome;
 import Interface.GuiWinner;
-import com.sun.net.httpserver.HttpExchange;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -26,8 +25,6 @@ public class Gameplay {
     static Player player1;
     static Player player2;
     public static Board board;
-
-    Gameplay(){}
 
     public static Player getActivePlayer(){
         return activePlayer;
@@ -74,7 +71,7 @@ public class Gameplay {
     }
 
     // TO-DO: get first player alphabetically
-    private static void getStartingPlayer(){
+    static void getStartingPlayer(){
         if (player1.compareTo(player2) == 1) {
             activePlayer = player1;
         } else {
@@ -162,22 +159,16 @@ public class Gameplay {
             throw new RuntimeException(e);
         }
 
-        boolean endOfGame = false;
         if (player1.getAliveCells() == 0 && player2.getAliveCells() == 0) {
-            endOfGame = true;
             winnerDisplay("You are both equally bad");
         }
         else if (player1.getAliveCells() == 0){
-            endOfGame = true;
             winnerDisplay(player2.getPlayerName()+ ", you win!!");
         }
         else if (player2.getAliveCells() == 0){
-            endOfGame = true;
-                winnerDisplay(player1.getPlayerName()+ ", you win!!");
+            winnerDisplay(player1.getPlayerName()+ ", you win!!");
         }
     }
-
-    private static void updateGui(){}
 
     private static void winnerDisplay(String winner){
         GuiWinner win = new GuiWinner(winner);
