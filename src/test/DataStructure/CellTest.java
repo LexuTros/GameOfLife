@@ -166,10 +166,74 @@ class CellTest {
         testCell.reviveCell(new Player("Karl", Color.RED));
         MouseEvent event = new MouseEvent(testCell, MouseEvent.MOUSE_PRESSED, System.currentTimeMillis(), 0, 0, 0, 1, false);
         testCell.mousePressed(event);
+        assertFalse(testCell.getIsAlive());
+    }
+
+    @Test
+    public void mousePressedNotEnabledTest() {
+        Cell testCell = new Cell();
+        testCell.setEnabledChange(false);
+        testCell.reviveCell(new Player("Karl", Color.RED));
+        MouseEvent event = new MouseEvent(testCell, MouseEvent.MOUSE_PRESSED, System.currentTimeMillis(), 0, 0, 0, 1, false);
+        testCell.mousePressed(event);
         assertTrue(testCell.getIsAlive());
 
     }
 
+    @Test
+    public void mousePressedFirstConditionTrueTest() {
+        Cell testCell = new Cell();
+        Player sazed = new Player("Sazed", Color.RED);
+        Gameplay.setToCreate(true);
+        Gameplay.setActivePlayer(sazed);
+        testCell.setFuturePlayer(sazed);
+        MouseEvent event = new MouseEvent(testCell, MouseEvent.MOUSE_PRESSED, System.currentTimeMillis(), 0, 0, 0, 1, false);
+        testCell.mousePressed(event);
+        assertFalse(Gameplay.getToCreate());
+    }
+
+    @Test
+    public void mousePressedSecondConditionTrueTest() {
+        Cell testCell = new Cell();
+        Player sazed = new Player("Sazed", Color.RED);
+        Gameplay.setActivePlayer(sazed);
+        testCell.reviveCell(sazed);
+        Gameplay.setGeneration(1);
+        try {
+            testCell.setRoundChanged(1);
+        } catch (Exception e) {
+            // should not throw exception
+        }
+        MouseEvent event = new MouseEvent(testCell, MouseEvent.MOUSE_PRESSED, System.currentTimeMillis(), 0, 0, 0, 1, false);
+        testCell.mousePressed(event);
+        assertTrue(Gameplay.getToCreate());
+    }
+
+    @Test
+    public void mousePressedThirdConditionTrueTest() {
+        Cell testCell = new Cell();
+        Player sazed = new Player("Sazed", Color.RED);
+        Player marsh = new Player("Marsh", Color.RED);
+        Gameplay.setToCreate(true);
+        Gameplay.setActivePlayer(sazed);
+        Gameplay.setToKill(true);
+        testCell.reviveCell(marsh);
+        MouseEvent event = new MouseEvent(testCell, MouseEvent.MOUSE_PRESSED, System.currentTimeMillis(), 0, 0, 0, 1, false);
+        testCell.mousePressed(event);
+        assertFalse(Gameplay.getToKill());
+    }
+
+    @Test
+    public void mousePressedFourthConditionTrueTest() {
+        Cell testCell = new Cell();
+        Player sazed = new Player("Sazed", Color.RED);
+        Gameplay.setActivePlayer(sazed);
+        Gameplay.setGeneration(1);
+        testCell.killCell();
+        MouseEvent event = new MouseEvent(testCell, MouseEvent.MOUSE_PRESSED, System.currentTimeMillis(), 0, 0, 0, 1, false);
+        testCell.mousePressed(event);
+        assertTrue(Gameplay.getToKill());
+    }
 
     @Test
     public void mouseClickedTest() {

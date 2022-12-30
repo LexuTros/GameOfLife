@@ -32,6 +32,11 @@ public class Gameplay {
     public static Player getActivePlayer(){
         return activePlayer;
             }
+
+    public static void setActivePlayer(Player newActivePlayer){
+        activePlayer = newActivePlayer;
+    }
+
     public static int getGeneration(){
         return generation;
     }
@@ -183,5 +188,7 @@ public class Gameplay {
     }
 
 
-
+    public static void setGeneration(int newGeneration) {
+        generation = newGeneration;
+    }
 }
