@@ -10,19 +10,21 @@ import java.awt.event.ActionListener;
 
 public class GuiWinner extends GuiTemplate implements ActionListener {
 
-    private final ButtonWinnerGui buttonExit;
-    private final ButtonWinnerGui buttonBackToBoard;
+    final ButtonWinnerGui buttonExit;
+    final ButtonWinnerGui buttonBackToBoard;
     private final ButtonWinnerGui buttonRestart;
     private final ButtonWinnerGui buttonNewGame;
+    public JLabel labelWin;
+    public JLabel labelWinner;
 
     public GuiWinner(String winner) {
         this.setLayout(null);
-        JLabel labelWin = new JLabel();
+        labelWin = new JLabel();
         labelWin.setFont(new Font("Papyrus", Font.BOLD, 60));
         labelWin.setText("CONGRATULATIONS");
         labelWin.setBounds(120,200,1000,100);
 
-        JLabel labelWinner = new JLabel();
+        labelWinner = new JLabel();
         labelWinner.setFont(new Font("Papyrus", Font.BOLD, 80));
         labelWinner.setText(winner);
         labelWinner.setBounds(240, 300,1000,100);
