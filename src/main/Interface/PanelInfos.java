@@ -20,11 +20,13 @@ public class PanelInfos extends JPanel implements ActionListener {
 
     private static Player playerOne;
     private static Player playerTwo;
-    private static Player activePlayer;
+    private Player activePlayer;
+
     private static JLabel generation;
     private static LabelActiveCells playerOneActiveCells;
     private static LabelActiveCells playerTwoActiveCells;
     private static JLabel labelActivePlayer;
+private static LabelPlayerColor labelActivePlayerColor;
 
     PanelInfos(Player player1, Player player2, Player activePlayerStart)
     {
@@ -39,12 +41,11 @@ public class PanelInfos extends JPanel implements ActionListener {
         generation.setFont(new Font("Comic Sans", Font.ITALIC, 20));
         generation.setForeground(Color.BLACK);
         generation.setBounds(10, 25, 160, 30);
-        //generation.setText("Generation " + Gameplay.getGeneration());
 
         // Box Player one
 
         PanelPlayerBox boxPlayerOne = new PanelPlayerBox();
-        boxPlayerOne.setBounds(10,100,160,80);
+        boxPlayerOne.setBounds(10,250,160,80);
 
         LabelPlayerName namePlayerOne = new LabelPlayerName();
         namePlayerOne.setText(playerOne.getPlayerName());
@@ -55,7 +56,6 @@ public class PanelInfos extends JPanel implements ActionListener {
         LabelTextActiveCells textActiveCellsOne = new LabelTextActiveCells();
 
         playerOneActiveCells = new LabelActiveCells();
-        //playerOneActiveCells.setText(String.valueOf(playerOne.getAliveCells()));
 
         boxPlayerOne.add(namePlayerOne);
         boxPlayerOne.add(colorPlayerOne);
@@ -65,7 +65,7 @@ public class PanelInfos extends JPanel implements ActionListener {
         // Box Player two
 
         PanelPlayerBox boxPlayerTwo = new PanelPlayerBox();
-        boxPlayerTwo.setBounds(10,200,160,80);
+        boxPlayerTwo.setBounds(10,350,160,80);
 
         LabelPlayerName namePlayerTwo = new LabelPlayerName();
         namePlayerTwo.setText(playerTwo.getPlayerName());
@@ -88,14 +88,17 @@ public class PanelInfos extends JPanel implements ActionListener {
         JLabel textActivePlayer = new JLabel();
         textActivePlayer.setFont(new Font("Comic Sans", Font.ITALIC, 20));
         textActivePlayer.setForeground(Color.black);
-        textActivePlayer.setBounds(20, 400, 160, 30);
+        textActivePlayer.setBounds(10, 100, 160, 30);
         textActivePlayer.setText("active Player:");
 
         labelActivePlayer = new JLabel();
         labelActivePlayer.setFont(new Font("MV Boli", Font.BOLD, 25));
-        labelActivePlayer.setForeground(Color.blue);
-        labelActivePlayer.setBounds(20, 440, 160, 30);
-        //labelActivePlayer.setText(activePlayer.getPlayerName());
+        labelActivePlayer.setForeground(Color.black);
+        labelActivePlayer.setBounds(10, 140, 160, 30);
+
+        labelActivePlayerColor= new LabelPlayerColor();
+        labelActivePlayerColor.setBounds(135, 145, 20, 20);
+
 
         // Button to continue game
 
@@ -111,6 +114,7 @@ public class PanelInfos extends JPanel implements ActionListener {
         this.add(generation);
         this.add(textActivePlayer);
         this.add(labelActivePlayer);
+        this.add(labelActivePlayerColor);
         this.add(boxPlayerOne);
         this.add(boxPlayerTwo);
         this.add(buttonDone);
@@ -137,8 +141,9 @@ public class PanelInfos extends JPanel implements ActionListener {
     public static void updateInfoPanel(){
         playerOneActiveCells.setText(String.valueOf(playerOne.getAliveCells()));
         playerTwoActiveCells.setText(String.valueOf(playerTwo.getAliveCells()));
-        generation.setText("Generation " + Gameplay.getGeneration());
+        generation.setText("Generation: " + Gameplay.getGeneration());
         labelActivePlayer.setText(Gameplay.getActivePlayer().getPlayerName());
+        labelActivePlayerColor.setBackground(Gameplay.getActivePlayer().getPlayerColor());
         }
 
 
