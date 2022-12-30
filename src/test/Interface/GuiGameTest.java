@@ -1,5 +1,6 @@
 package Interface;
 
+import Logic.Gameplay;
 import org.junit.jupiter.api.Test;
 import DataStructure.Board;
 import DataStructure.Player;
@@ -14,9 +15,12 @@ public class GuiGameTest {
     Player p1 = new Player("Philipp", Color.GREEN);
     Player p2 = new Player("Johnny", Color.PINK);
     Player activePlayer = p1;
-    GuiGame guiGame = new GuiGame(board, p1, p2, activePlayer);
+
     @Test
     public void constructorTest() {
+        Gameplay.setActivePlayer(p1);
+        GuiGame guiGame = new GuiGame(board, p1, p2, activePlayer);
+
         assertNotNull(guiGame);
     }
 
