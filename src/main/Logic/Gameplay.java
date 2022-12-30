@@ -7,6 +7,7 @@ import Exceptions.InvalidCoordinate;
 import Exceptions.NegativeAmountOfNeighbors;
 import Exceptions.NoPlayerAssigned;
 import Exceptions.TooManyAliveNeighbors;
+
 import Interface.*;
 
 import java.awt.*;
@@ -22,8 +23,6 @@ public class Gameplay {
     static Player player1;
     static Player player2;
     public static Board board;
-
-    Gameplay(){}
 
     public static Player getActivePlayer(){
         return activePlayer;
@@ -51,7 +50,7 @@ public class Gameplay {
         toCreate = changeToKill;
     }
 
-    private static void welcomeDisplay(){
+    static void welcomeDisplay(){
         GuiWelcome welcome = new GuiWelcome();
     }
 
@@ -68,6 +67,7 @@ public class Gameplay {
         getStartingPlayer();
         startGame();
     }
+
 
     private static void getStartingPlayer(){
         if (player1.compareTo(player2) < 0) {
@@ -160,18 +160,14 @@ public class Gameplay {
             throw new RuntimeException(e);
         }
 
-        boolean endOfGame = false;
         if (player1.getAliveCells() == 0 && player2.getAliveCells() == 0) {
-            endOfGame = true;
             winnerDisplay("You are both equally bad");
         }
         else if (player1.getAliveCells() == 0){
-            endOfGame = true;
             winnerDisplay(player2.getPlayerName()+ ", you win!!");
         }
         else if (player2.getAliveCells() == 0){
-            endOfGame = true;
-                winnerDisplay(player1.getPlayerName()+ ", you win!!");
+            winnerDisplay(player1.getPlayerName()+ ", you win!!");
         }
     }
 
