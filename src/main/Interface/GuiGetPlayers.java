@@ -8,6 +8,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class GuiGetPlayers extends GuiTemplate implements ActionListener {
 
@@ -126,8 +127,13 @@ public class GuiGetPlayers extends GuiTemplate implements ActionListener {
             players = new ArrayList<>();
             players.add(0, textPlayerOne.getText());
             players.add(1, textPlayerTwo.getText());
-            this.dispose();
-            Gameplay.initializePlayers();
+            if (Objects.equals(colors.get(0), colors.get(1))){
+                JOptionPane.showMessageDialog(null, "please choose two different colors", "player colors are identical", JOptionPane.WARNING_MESSAGE);
+            }
+            else {
+                this.dispose();
+                Gameplay.initializePlayers();
+            }
         }
     }
 
