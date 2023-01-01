@@ -57,7 +57,8 @@ public class GuiGame extends GuiTemplate implements ActionListener {
             System.exit(0);
         }
 
-    }}
+    }
+}
 
 
 
