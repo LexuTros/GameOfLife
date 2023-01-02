@@ -10,12 +10,12 @@ import java.awt.event.ActionListener;
 
 public class GuiWinner extends GuiTemplate implements ActionListener {
 
-    ButtonWinnerGui buttonExit;
-    ButtonWinnerGui buttonBackToBoard;
-    ButtonWinnerGui buttonRestart;
-    ButtonWinnerGui buttonNewGame;
-    public JLabel labelWin;
-    public JLabel labelWinner;
+    protected ButtonWinnerGui buttonExit;
+    protected ButtonWinnerGui buttonBackToBoard;
+    protected ButtonWinnerGui buttonRestart;
+    protected ButtonWinnerGui buttonNewGame;
+    protected JLabel labelWin;
+    protected JLabel labelWinner;
 
     public GuiWinner(String winner) {
         this.setLayout(null);

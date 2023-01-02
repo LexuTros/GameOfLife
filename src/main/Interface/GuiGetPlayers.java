@@ -13,9 +13,9 @@ import java.util.Objects;
 public class GuiGetPlayers extends GuiTemplate implements ActionListener {
 
 
-    final JButton buttonContinue;
-    private final JButton buttonChooseColor1;
-    private final JButton buttonChooseColor2;
+    protected final JButton buttonContinue;
+    protected final JButton buttonChooseColor1;
+    protected final JButton buttonChooseColor2;
     private final TextFieldGetPlayerName textPlayerOne;
     private final TextFieldGetPlayerName textPlayerTwo;
 
