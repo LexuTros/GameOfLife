@@ -13,7 +13,7 @@ import java.util.Objects;
 public class GuiGetPlayers extends GuiTemplate implements ActionListener {
 
 
-    final JButton continueButton;
+    final JButton buttonContinue;
     private final JButton buttonChooseColor1;
     private final JButton buttonChooseColor2;
     private final TextFieldGetPlayerName textPlayerOne;
@@ -34,20 +34,20 @@ public class GuiGetPlayers extends GuiTemplate implements ActionListener {
 
         // Panel continueButton
 
-        continueButton = new JButton();
-        continueButton.addActionListener(this);
+        buttonContinue = new JButton();
+        buttonContinue.addActionListener(this);
 
-        continueButton.setText("Click to continue");
-        continueButton.setHorizontalTextPosition(JButton.CENTER);
-        continueButton.setVerticalTextPosition(JButton.BOTTOM);
-        continueButton.setFont(new Font("Comic Sans", Font.BOLD, 20));
+        buttonContinue.setText("Click to continue");
+        buttonContinue.setHorizontalTextPosition(JButton.CENTER);
+        buttonContinue.setVerticalTextPosition(JButton.BOTTOM);
+        buttonContinue.setFont(new Font("Comic Sans", Font.BOLD, 20));
 
         JPanel panelButton = new JPanel();
         panelButton.setLayout(new BorderLayout());
         panelButton.setBounds(200,500,250,80);
 
 
-        panelButton.add(continueButton);
+        panelButton.add(buttonContinue);
 
         // Panel Title Frame
 
@@ -123,7 +123,7 @@ public class GuiGetPlayers extends GuiTemplate implements ActionListener {
             colors.set(1, color);
         }
 
-        if (e.getSource() == continueButton) {
+        if (e.getSource() == buttonContinue) {
             players = new ArrayList<>();
             players.add(0, textPlayerOne.getText());
             players.add(1, textPlayerTwo.getText());
