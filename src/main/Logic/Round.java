@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class Round {
+public final class Round {
 
     private static void determineCellFuture(Board board, int xCoordinate, int yCoordinate) throws InvalidCoordinate, NoPlayerAssigned, TooManyAliveNeighbors, NegativeAmountOfNeighbors {
         Cell currentCell = board.getField(xCoordinate, yCoordinate);
@@ -48,7 +48,6 @@ public class Round {
     }
 
 
-
     private static void progressCell(Cell cell) throws NoPlayerAssigned {
         int neighbors = cell.getAliveNeighbors();
         if (cell.getIsAlive()) {
@@ -62,6 +61,7 @@ public class Round {
         }
     }
 
+
     public static void simulateGeneration(Board board) throws NoPlayerAssigned, TooManyAliveNeighbors, NegativeAmountOfNeighbors, InvalidCoordinate {
         for (int x = 1; x <= board.width; x++) {
             for (int y = 1; y <= board.height; y++) {
@@ -74,4 +74,5 @@ public class Round {
             }
         }
     }
+
 }
