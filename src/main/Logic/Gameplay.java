@@ -138,7 +138,7 @@ public class Gameplay {
 
 
 
-    public static void getStartingPlayer(){
+    protected static void getStartingPlayer(){
         if (player1.compareTo(player2) < 0) {
             activePlayer = player1;
         } else {
