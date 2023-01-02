@@ -175,6 +175,9 @@ class CellTest {
     public void mousePressedFirstConditionTrueTest() {
         Cell testCell = new Cell();
         Player sazed = new Player("Sazed", Color.RED);
+        Player marsh = new Player("Marsh", Color.RED);
+        Board board = new Board(50,37);
+        new GuiGame(board, sazed, marsh);
         Gameplay.setToCreate(true);
         Gameplay.setActivePlayer(sazed);
         testCell.setFuturePlayer(sazed);
@@ -187,6 +190,9 @@ class CellTest {
     public void mousePressedSecondConditionTrueTest() {
         Cell testCell = new Cell();
         Player sazed = new Player("Sazed", Color.RED);
+        Player marsh = new Player("Marsh", Color.RED);
+        Board board = new Board(50,37);
+        new GuiGame(board, sazed, marsh);
         Gameplay.setActivePlayer(sazed);
         testCell.reviveCell(sazed);
         Gameplay.setGeneration(1);
@@ -205,6 +211,8 @@ class CellTest {
         Cell testCell = new Cell();
         Player sazed = new Player("Sazed", Color.RED);
         Player marsh = new Player("Marsh", Color.RED);
+        Board board = new Board(50,37);
+        new GuiGame(board, sazed, marsh);
         Gameplay.setToCreate(true);
         Gameplay.setActivePlayer(sazed);
         Gameplay.setToKill(true);
